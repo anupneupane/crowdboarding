@@ -13,7 +13,6 @@
 		%meta{:name => "viewport", :content => "initial-scale=1.0, user-scalable=no"}
 		<!--[if lt IE 9]> #{stylesheet_link_tag('ie8')} <![endif]-->
 	%body{:class => "#{show_splash? ? "splash" : ""}"}
-		= render(:partial => "home/noticebar")
 		#wrapper_header
 			#header
 				#title
@@ -47,5 +46,6 @@
 			#content
 				= yield
 			= yield :sidebar_right
-		=render :partial => 'home/footer'
+		= render :partial => 'home/footer'
+		= render(:partial => "home/noticebar")
 		= yield :scripts
