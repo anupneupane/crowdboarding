@@ -67,6 +67,8 @@ class Event < ActiveRecord::Base
       forecast = weather.for(self.starts_at)
     rescue ArgumentError 
       forecast = nil
+    rescue SocketError
+      forcast = nil
     end
 
     if forecast.nil?
