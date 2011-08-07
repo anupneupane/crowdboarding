@@ -9,7 +9,8 @@
 			= @event.address
 			= display_location_info(@event)
 		%p.starts_at= relative_date(@event.starts_at.in_time_zone)
-	=render :partial => 'map', :locals => {:gmaps_json => @gmaps_json}
+	=# render :partial => 'map', :locals => {:gmaps_json => @gmaps_json}
+	= image_tag "http://maps.google.com/maps/api/staticmap?size=700x208&sensor=false&zoom=16&markers=#{@event.lat}%2C#{@event.lng}", :id => "event_map"
 	.event_subinfo
 		.event_subinfo_container
 			.subinfo_block

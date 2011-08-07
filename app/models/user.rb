@@ -24,6 +24,14 @@ class User < ActiveRecord::Base
   has_many :notifications
   belongs_to :default_city, :class_name => 'City'
   
+  geocoded_by :last_signed_in_ip,
+    :latitude => :current_location_latitude, :longitude => :current_location_longitude
+  after_validation :geocode, :if => :last_signed_in_ip_changed?
+  
+  reverse_geocoded_by :current_location_latitude, :current_location_longitude,
+    :address => :current_location_address
+  after_validation :reverse_geocode, :if => :current_location_longitude_changed?
+  
   
   has_attached_file :avatar, 
                     :styles => { :thumb => "220x220#", :medium => "60x60", :small => "25x25#" },

@@ -6,8 +6,13 @@ class Event < ActiveRecord::Base
   validates :address, :presence => true
   validates :country_id, :presence => true
   validate :maximum_tags
-
-  acts_as_gmappable :lat => 'lat', :lng => "lng", :check_process => false
+  
+  # Maybe handy for the future if we would like to show iframe maps in the event show page. We use an image for now.
+  # acts_as_gmappable :lat => 'lat', :lng => "lng", :check_process => false
+  geocoded_by :address, :latitude  => :lat, :longitude => :lng 
+  after_validation :geocode, :if => :address_changed? 
+  before_validation :set_address_geocode
+  
   acts_as_taggable
   
   attr_accessible :name, :description, :address, :lat, :lng, :contact_details, :tag_tokens, :country_id, :city_name
@@ -137,6 +142,12 @@ class Event < ActiveRecord::Base
         config.consumer_secret = ENV["TW_#{language}_CONSUMER_SECRET"]
         config.oauth_token = ENV["TW_#{language}_OAUTH_TOKEN"]
         config.oauth_token_secret = ENV["TW_#{language}_OAUTH_TOKEN_SECRET"]
+      end
+    end
+    
+    def set_address_geocode
+      if city_name.present? && address.present? && !address.match(city_name)
+        address = "#{address}, #{city_name}"
       end
     end
 end

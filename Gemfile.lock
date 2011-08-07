@@ -118,6 +118,7 @@ GEM
       i18n (~> 0.4)
     fssm (0.2.7)
     gem_plugin (0.2.3)
+    geocoder (1.0.2)
     gherkin (2.4.1)
       json (>= 1.4.6)
     gmaps4rails (0.8.8)
@@ -323,6 +324,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   formtastic (= 1.2.4)
+  geocoder
   gmaps4rails
   growl
   guard

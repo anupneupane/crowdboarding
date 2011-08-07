@@ -18,6 +18,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.integer :default_city_id
       t.integer :profile_views, :default => 0
       t.boolean :event_friend_updates, :default => true
+
+      t.float :current_location_latitude
+      t.float :current_location_longitude
+      t.string :current_location_address
       
       t.string :users, :avatar_file_name
       t.string :users, :avatar_content_type
