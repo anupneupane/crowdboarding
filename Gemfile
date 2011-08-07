@@ -22,7 +22,7 @@ gem 'faker'
 gem 'barometer'
 gem 'acts-as-taggable-on'
 gem 'rails3-jquery-autocomplete'
-gem 'omniauth'
+gem 'omniauth', '>= 0.2.6'
 gem 'twitter'
 
 group :development, :test do
