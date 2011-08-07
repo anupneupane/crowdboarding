@@ -8,7 +8,6 @@ class RegistrationsController < Devise::RegistrationsController
 
     def build_resource(*args)
       super
-      @user.ip_address = request.remote_ip
       if session[:omniauth]
         @user.apply_omniauth(session[:omniauth])
         @user.valid?
