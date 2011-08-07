@@ -4,7 +4,13 @@ namespace :db do
     require 'populator'
     require 'faker'
     
-    [Event, User].each(&:delete_all)    
+    [Event, User, Country, Tag].each(&:delete_all)    
+    
+    Country.create!(:name => "Spain", :country_code => "es")
+    
+    Tag.create!(:name => "Longboard")
+    Tag.create!(:name => "Retiro")
+    Tag.create!(:name => "Skateboard")
     
     User.populate 100 do |user|
       user.name = Faker::Name.name
@@ -20,7 +26,7 @@ namespace :db do
     
     Event.populate 100 do |event|
       event.name = Populator.words(1..3).titleize
-      event.name = Populator.words(1..3).titleize
+      event.country_id = Country.first.id
       event.created_at = 2.years.ago..Time.now
       event.starts_at = 1.weeks.ago..1.weeks.from_now
       event.user_id = (rand * User.count).to_i
@@ -32,8 +38,9 @@ namespace :db do
       event.users_count = 1..40
     end
     
-    Tag.create!(:name => "Longboard")
-    Tag.create!(:name => "Retiro")
-    Tag.create!(:name => "Skateboard")
+    Event.all.each do |event|
+      event.tag_list = Tag.all[rand * 3].name
+      event.save
+    end
   end
 end
