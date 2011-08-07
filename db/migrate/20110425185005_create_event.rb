@@ -5,7 +5,7 @@ class CreateEvent < ActiveRecord::Migration
       t.string :name, :limit => 100
       t.datetime :starts_at
       t.text :description
-      t.string :address, :limit => 100
+      t.string :street, :limit => 100
       t.integer :country_id
       t.string :city_name, :limit => 100
       t.string :contact_details, :limit => 100

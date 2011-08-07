@@ -3,19 +3,18 @@ class Event < ActiveRecord::Base
   validates :contact_details, :length => { :maximum => 100 }
   validates :city_name, :presence => true
   validates :starts_at, :presence => true
-  validates :address, :presence => true
+  validates :street, :presence => true
   validates :country_id, :presence => true
   validate :maximum_tags
   
   # Maybe handy for the future if we would like to show iframe maps in the event show page. We use an image for now.
   # acts_as_gmappable :lat => 'lat', :lng => "lng", :check_process => false
   geocoded_by :address, :latitude  => :lat, :longitude => :lng 
-  after_validation :geocode, :if => :address_changed? 
-  before_validation :set_address_geocode
+  after_validation :geocode, :if => :street_changed? 
   
   acts_as_taggable
   
-  attr_accessible :name, :description, :address, :lat, :lng, :contact_details, :tag_tokens, :country_id, :city_name
+  attr_accessible :name, :description, :street, :lat, :lng, :contact_details, :tag_tokens, :country_id, :city_name
   
   belongs_to :user
   belongs_to :city
@@ -38,6 +37,10 @@ class Event < ActiveRecord::Base
     "#{id}-#{name.parameterize}"
   end
   
+  def address
+    [street, city_name, countrytry(:name)].compact.join(', ')
+  end
+  
   def size_status
     case users_count
     when 0..10 then "small meeting"
@@ -48,11 +51,11 @@ class Event < ActiveRecord::Base
   end
   
   def gmaps4rails_address
-    "#{self.address}, #{self.city.try(:name)}, #{self.country.try(:name_without_comma)}"
+    "#{self.street}, #{self.city.try(:name)}, #{self.country.try(:name_without_comma)}"
   end
   
   def gmaps4rails_infowindow
-    "<b>Longboard event</b><br/>#{self.address}, #{self.city.try(:name)}. <a href=''>#{self.user.nickname}</a>"
+    "<b>Longboard event</b><br/>#{self.street}, #{self.city.try(:name)}. <a href=''>#{self.user.nickname}</a>"
   end
   
   def gmaps4rails_marker_picture
@@ -142,12 +145,6 @@ class Event < ActiveRecord::Base
         config.consumer_secret = ENV["TW_#{language}_CONSUMER_SECRET"]
         config.oauth_token = ENV["TW_#{language}_OAUTH_TOKEN"]
         config.oauth_token_secret = ENV["TW_#{language}_OAUTH_TOKEN_SECRET"]
-      end
-    end
-    
-    def set_address_geocode
-      if city_name.present? && address.present? && !address.match(city_name)
-        address = "#{address}, #{city_name}"
       end
     end
 end

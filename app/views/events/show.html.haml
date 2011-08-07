@@ -5,9 +5,7 @@
 			(#{link_to "edit", edit_event_path(@event)})
 		
 	.event_info
-		%p.address
-			= @event.address
-			= display_location_info(@event)
+		%p.address= @event.address
 		%p.starts_at= relative_date(@event.starts_at.in_time_zone)
 	=# render :partial => 'map', :locals => {:gmaps_json => @gmaps_json}
 	= image_tag "http://maps.google.com/maps/api/staticmap?size=700x208&sensor=false&zoom=16&markers=#{@event.lat}%2C#{@event.lng}", :id => "event_map"
