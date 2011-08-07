@@ -1,2 +1,2 @@
-class Admin::CommentsController < Admin::ResourcesController
-end
+# class Admin::CommentsController < Admin::ResourcesController
+# end

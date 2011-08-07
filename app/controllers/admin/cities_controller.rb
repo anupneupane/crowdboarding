@@ -1,2 +1,2 @@
-class Admin::CitiesController < Admin::ResourcesController
-end
+# class Admin::CitiesController < Admin::ResourcesController
+# end

@@ -1,2 +1,2 @@
-class Admin::CountriesController < Admin::ResourcesController
-end
+# class Admin::CountriesController < Admin::ResourcesController
+# end
