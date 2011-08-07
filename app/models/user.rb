@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   
   geocoded_by :last_signed_in_ip,
     :latitude => :current_location_latitude, :longitude => :current_location_longitude
-  after_validation :geocode, :if => :last_signed_in_ip_changed?
+  after_validation :geocode, :if => :last_sign_in_ip_changed?
   
   reverse_geocoded_by :current_location_latitude, :current_location_longitude,
     :address => :current_location_address
