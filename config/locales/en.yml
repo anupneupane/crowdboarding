@@ -19,6 +19,8 @@ en:
     actions:
       signin: "Sign in"
       signup: "Sign up"
+      password_forgotten: "Send me reset password instructions"
+      change_password: "Change my password"
   
   global:
     edit: "edit"

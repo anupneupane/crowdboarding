@@ -222,6 +222,8 @@ es:
     actions:
       signin: "Entrar"
       signup: "Registrate"
+      password_forgotten: "(Need translation) Send me reset password instructions"
+      change_password: "(Need translation) Change my password"
   
   global:
     edit: "editar"
