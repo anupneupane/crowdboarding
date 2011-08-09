@@ -30,6 +30,11 @@ class Event < ActiveRecord::Base
   after_create :notify_friends
   after_create :send_tweet
   
+  geocoded_by :address,
+    :latitude => :lat, :longitude => :lng
+  after_validation :geocode, :if => :change_address?
+  
+  
   scope :recent, :order => "starts_at DESC"
   scope :from_now, :order => "starts_at ASC", :conditions => ["starts_at > ?", Time.now - 2.hour]
   
@@ -38,7 +43,7 @@ class Event < ActiveRecord::Base
   end
   
   def address
-    [street, city_name, countrytry(:name)].compact.join(', ')
+    [street, city_name, country.try(:name)].compact.join(', ')
   end
   
   def size_status
@@ -146,5 +151,9 @@ class Event < ActiveRecord::Base
         config.oauth_token = ENV["TW_#{language}_OAUTH_TOKEN"]
         config.oauth_token_secret = ENV["TW_#{language}_OAUTH_TOKEN_SECRET"]
       end
+    end
+    
+    def change_address?
+      street_changed? || city_name_changed?
     end
 end

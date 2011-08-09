@@ -5,7 +5,7 @@
 		= f.input :description, :input_html => { :rows => 6 }
 		= f.input :country, :prompt => "Please select a country"
 		= f.autocompleted_input :city_name, :url => autocomplete_city_name_events_path
-		= f.input :address, :input_html => { :placeholder => "Enter the address" }
+		= f.input :street, :input_html => { :placeholder => "Enter the street name" }
 		= f.input :contact_details, :input_html => { :placeholder => "Enter your contact details" }
 		= f.input :tag_tokens, :as => :string
 	= f.inputs :id => "starts_at_datetime" do

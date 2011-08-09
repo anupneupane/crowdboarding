@@ -20,7 +20,7 @@ describe "Events" do
       fill_in "Name", :with => "Friday Retiro"
       select "Spain", :from => "Country"
       fill_in "City", :with => "Madrid"
-      fill_in "Address", :with => "Calle Alcala 177 7B"
+      fill_in "Street", :with => "Calle Alcala 177 7B"
       fill_in "Contact details", :with => "1234567890"
       fill_in "Tag tokens", :with => "Retiro Longboard"
       fill_in "Enter Date", :with => "2011-06-24"

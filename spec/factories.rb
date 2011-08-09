@@ -12,7 +12,7 @@ Factory.define :event do |event|
   event.starts_at Time.now + 2.weeks
   event.contact_details "1234567890"
   event.city_name "Madrid"
-  event.address "Calle Alcala 177 7B"
+  event.street "Calle Alcala 177 7B"
   event.tag_tokens "Retiro Longboard"
 end
 

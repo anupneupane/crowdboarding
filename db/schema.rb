@@ -12,22 +12,6 @@
 
 ActiveRecord::Schema.define(:version => 20110605163509) do
 
-  create_table "admin_users", :force => true do |t|
-    t.string   "first_name",       :default => "",    :null => false
-    t.string   "last_name",        :default => "",    :null => false
-    t.string   "role",                                :null => false
-    t.string   "email",                               :null => false
-    t.boolean  "status",           :default => false
-    t.string   "token",                               :null => false
-    t.string   "salt",                                :null => false
-    t.string   "crypted_password",                    :null => false
-    t.string   "preferences"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
-
   create_table "attendances", :force => true do |t|
     t.integer  "user_id"
     t.integer  "event_id"
@@ -79,7 +63,7 @@ ActiveRecord::Schema.define(:version => 20110605163509) do
     t.string   "name",            :limit => 100
     t.datetime "starts_at"
     t.text     "description"
-    t.string   "address",         :limit => 100
+    t.string   "street",          :limit => 100
     t.integer  "country_id"
     t.string   "city_name",       :limit => 100
     t.string   "contact_details", :limit => 100
@@ -153,7 +137,6 @@ ActiveRecord::Schema.define(:version => 20110605163509) do
     t.integer  "default_city_id"
     t.integer  "profile_views",                             :default => 0
     t.boolean  "event_friend_updates",                      :default => true
-    t.string   "ip_address"
     t.float    "current_location_latitude"
     t.float    "current_location_longitude"
     t.string   "current_location_address"
