@@ -2,6 +2,9 @@
 %html{"lang" => I18n.locale }
 	%head
 		%title= get_title
+		/[if lte IE 6]
+			:javascript
+				window.location.href = "http://crowdboarding.com/ie6.html"
 		%meta{:charset => "utf-8"}
 		%meta{:name => "keywords", :content => get_keywords}
 		%meta{:name => "description", :content => get_description}		
@@ -11,7 +14,8 @@
 		= yield :head
 		= csrf_meta_tag
 		%meta{:name => "viewport", :content => "initial-scale=1.0, user-scalable=no"}
-		<!--[if lt IE 9]> #{stylesheet_link_tag('ie8')} <![endif]-->
+		/[if lt IE 9]
+			= stylesheet_link_tag('ie8')
 	%body{:class => "#{show_splash? ? "splash" : ""}"}
 		#wrapper_header
 			#header
