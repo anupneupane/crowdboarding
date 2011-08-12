@@ -74,7 +74,6 @@ class Event < ActiveRecord::Base
   def weather
     # We really need a rescue here? If so, please rescue with an exception
     begin
-      Barometer.google_geocode_key = ENV['GOOGLE_GEOCODE_KEY']
       barometer = Barometer.new("#{self.city_name}, #{self.country.name}")
       weather = barometer.measure
       forecast = weather.for(self.starts_at)
@@ -107,7 +106,7 @@ class Event < ActiveRecord::Base
   end
   
   def send_tweet
-    if RAILS_ENV == 'production'
+    if Rails.env == 'production'
       if self.country.name.downcase == 'spain'
         configure_twitter "ES"
         Twitter.update("Nuevo evento en #{self.city_name}, #{self.country.name} http://www.crowdboarding.com/events/#{self.id}")
