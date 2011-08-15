@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	mouseOverHelmet();
+	clickHelmet();
 	showNotifyBar();
 });
 
@@ -16,4 +17,10 @@ showNotifyBar = function(){
 	if(notifier.length) {
 		notifier.slideDown().delay(3000).slideUp();
 	}
+}
+
+clickHelmet = function(){
+	$('div#helmet').click(function(){
+		window.location = "/helmet"
+	});
 }
