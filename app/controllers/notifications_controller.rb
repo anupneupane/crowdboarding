@@ -5,7 +5,7 @@ class NotificationsController < ApplicationController
   def index
     @notifications = current_user.notifications.order("created_at DESC").page(params[:page]).per(10)
     if @notifications.present?
-      Notification.update_all("read = 1 ", "id IN (#{@notifications.map(&:id).join(", ")})")
+      Notification.update_all({:read => true}, "id IN (#{@notifications.map(&:id).join(", ")})")
     end
     
     respond_to do |format|
