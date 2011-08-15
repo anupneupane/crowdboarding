@@ -1,0 +1,24 @@
+@import "support/colors"
+
+.notifications
+	.notification
+		clear: both
+		border-bottom: 1px solid $invisible_gray
+		background: url(/images/icons/map_12.png) no-repeat 4px 9px
+		padding: 5px 0 5px 20px
+		span.date
+			font-size: 0.9em
+			color: $gray_for_texts
+		a.delete
+			background: url(/images/icons/delete_7.gif) no-repeat 0 0
+			width: 7px
+			height: 7px
+			float: right
+			margin: 5px 5px 0 0
+			cursor: pointer
+			span
+				display: none
+		a.delete.hidden
+			display: none
+	.notification.hover
+		background-color: $dirty_white

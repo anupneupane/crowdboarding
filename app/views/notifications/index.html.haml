@@ -1,0 +1,9 @@
+%h2 Your Notifications
+= paginate @notifications
+.notifications
+	= render @notifications
+:javascript
+	$('div.notification').hover(function(){
+		$(this).find('a.delete').toggleClass("hidden");
+		$(this).toggleClass("hover");
+	});

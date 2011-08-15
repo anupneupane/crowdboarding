@@ -13,12 +13,14 @@ Crowdboarding::Application.routes.draw do
   resources :attendances, :only => [:create, :destroy]
   resources :tags, :only => [:index, :show]
   resources :authentications, :only => [:index, :create, :destroy]
+  resources :notifications
     
   # Static pages
   match 'contact' => 'home#contact', :as => :contact
   match 'about' => 'home#about', :as => :about
   match 'help' => 'home#help', :as => :help
   match 'welcome' => 'home#welcome', :as => :welcome
+  match 'helmet' => 'home#helmet', :as => :helmet
   
   # Omniauth
   match '/auth/:provider/callback' => 'authentications#create'

@@ -9,6 +9,7 @@ en:
       long: "%d %B %Y %H:%M"
       time: "%H:%M"
       event: "%A, %e %B %Y, %H:%M"
+      notification: "%e %B %Y, %H:%M"
       only_second: "%S"
       
   formtastic:

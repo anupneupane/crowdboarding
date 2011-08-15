@@ -1,0 +1,6 @@
+.notification
+	= notification.body
+	= notification.read
+	%span.date= l(notification.created_at.in_time_zone, :format => :notification)
+	
+	=link_to content_tag(:span, "delete"), notification_path(notification), :method => :delete, :confirm => "Are you sure?", :class => "delete hidden"

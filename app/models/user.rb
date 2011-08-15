@@ -38,8 +38,7 @@ class User < ActiveRecord::Base
                     :s3_credentials => {
                       :access_key_id => ENV['S3_KEY'],
                       :secret_access_key => ENV['S3_SECRET']
-                    }
-  
+                    }  
   def get_age
     ((Time.now - self.birthdate.to_time)/1.year).to_i
   end
@@ -70,7 +69,7 @@ class User < ActiveRecord::Base
   end
   
   def unread_notifications
-    notifications.where(:read => false)
+    notifications.where(:read => false).order("created_at DESC")
   end
   
   private
