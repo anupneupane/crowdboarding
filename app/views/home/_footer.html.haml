@@ -18,6 +18,8 @@
 					%li= link_to t('footer.contact'), contact_path
 					%li= link_to t('footer.help'), help_path
 					%li= link_to t('footer.riders'), users_path
+					- if user_signed_in?
+						%li= link_to "notifications", notifications_path
 					%li= link_to t('footer.authentications'), authentications_path
 		.section
 			.footer_title
