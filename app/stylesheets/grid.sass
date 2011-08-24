@@ -29,6 +29,7 @@ body
 	#header
 		color: $almost_white
 		height: 40px
+		position: relative
 		#title
 			+grid(8)
 			+alpha
@@ -50,6 +51,8 @@ body
 					+border-radius(2px)
 				li.highlighted a
 					+gray_button
+				li.highlighted_notification a
+					+red_button
 				li.highlighted_plus a
 					+gray_button_plus
 					span
@@ -61,6 +64,32 @@ body
 				li.small a
 					font-size: 0.9em
 					color: $gray_for_big_texts
+				li a.hover
+					+button_hover
+		#notifications_window
+			position: absolute
+			top: 45px
+			left: 645px
+			width: 293px
+			border: 1px solid $dark_gray
+			background-color: $almost_white
+			padding-bottom: 5px
+			display: none
+			header
+				border-bottom: 1px solid $dark_gray
+				background-color: $dirty_white
+				a.show_all
+					float: right
+					margin-right: 10px
+				span.title
+					color: $almost_black
+					font-size: 1.3em
+					padding-left: 10px
+			#notifications_body
+				position: relative
+				color: black
+				min-height: 150px
+				padding: 10px
 	#wrapper_navigation
 		height: 27px
 		background-color: #F0F0F0

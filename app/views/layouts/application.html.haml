@@ -10,7 +10,7 @@
 		%meta{:name => "description", :content => get_description}		
 		%meta{:name => "author", :content => "Victor Martin and Michael Koper"}
 		= stylesheet_link_tag 'grid', 'text', 'home', 'event', 'user', 'notification', 'authentication', 'devise', 'formtastic', 'formtastic_changes', 'pepper-grinder/jquery-ui.custom'
-		= javascript_include_tag 'jquery.min', 'jquery-ui.custom.min', 'rails.js', 'autocomplete-rails.js', 'application'
+		= javascript_include_tag 'jquery.min', 'jquery-ui.custom.min', 'rails.js', 'autocomplete-rails.js', 'spin.min','application'
 		= yield :head
 		= csrf_meta_tag
 		%meta{:name => "viewport", :content => "initial-scale=1.0, user-scalable=no"}
@@ -24,15 +24,21 @@
 				#header_info
 					%ul
 						- if user_signed_in?
-							- if current_user.unread_notifications.any?
-								%li= link_to "You have #{ pluralize(current_user.unread_notifications.size, "unread notification") }", notifications_path
 							%li.highlighted_plus=link_to raw("<span>#{t('header.add_event')}</span>"), new_event_path
+							%li#notifications.highlighted_notification
+								= link_to current_user.unread_notifications.size, "javascript:;"
 							%li.small=link_to t('header.logout'), destroy_user_session_path
 							%li= link_to current_user.nickname, user_path(current_user)
 							%li.avatar=link_to raw("#{image_tag current_user.avatar(:small), :width => 25, :height => 25}"), user_path(current_user)
 						- else
 							%li.highlighted= link_to t('header.register'), new_user_registration_path
 							%li= link_to t('header.login'), new_user_session_url
+				#notifications_window
+					%header
+						%span.title Notifications
+						= link_to "Show everything", notifications_path, :class => "show_all"
+					#notifications_body
+
 		- if(!current_page? root_path or user_signed_in?)
 			#wrapper_navigation
 				#navigation

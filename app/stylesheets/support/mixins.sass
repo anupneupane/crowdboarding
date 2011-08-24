@@ -18,30 +18,39 @@
 	padding: 5px 7px
 	margin-left: 3px
 	
-@mixin green_button
-	color: $almost_white
-	@include linear-gradient(color-stops($crowdboarding, $dark_crowdboarding))
+@mixin standard_button
 	@include border-radius(5px)
 	font-weight: bolder
+	
+@mixin green_button
+	+standard_button
+	color: $almost_white
+	@include linear-gradient(color-stops($crowdboarding, $dark_crowdboarding))
 	padding: 10px 30px
 	
 @mixin gray_button
+	+standard_button
 	color: $almost_black
 	@include linear-gradient(color-stops(#FEFEFE, #ddd))
-	@include border-radius(5px)
-	font-weight: bolder
 	padding: 5px 10px
 
 @mixin blue_button
+	+standard_button
 	color: $almost_white
 	@include linear-gradient(color-stops($crowdboarding_blue, $dark_crowdboarding_blue))
-	@include border-radius(5px)
-	font-weight: bolder
+	padding: 5px 10px
+	
+@mixin red_button
+	+standard_button
+	color: $almost_white
+	@include linear-gradient(color-stops($countercrowdboarding, darken($countercrowdboarding, 10%)))
 	padding: 5px 10px
 
 @mixin gray_button_plus
+	+standard_button
 	color: $almost_black
 	@include linear-gradient(color-stops(#FEFEFE, #ddd))
-	@include border-radius(5px)
-	font-weight: bolder
 	padding: 5px 10px
+	
+@mixin button_hover
+	opacity: 0.6
