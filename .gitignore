@@ -1,6 +1,7 @@
 .bundle
 db/*.sqlite3
 log/*.log
+.rvmrc
 public/log/*.log
 tmp/
 public/stylesheets/grid.css
