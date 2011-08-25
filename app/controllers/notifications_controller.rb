@@ -1,4 +1,5 @@
 class NotificationsController < ApplicationController
+  respond_to :html, :xml, :json
   load_and_authorize_resource
   
   # GET /notifications
@@ -8,23 +9,20 @@ class NotificationsController < ApplicationController
       Notification.update_all({:read => true}, "id IN (#{@notifications.map(&:id).join(", ")})")
     end
     
-    respond_to do |format|
-      format.html # index.html.erb
-    end
+    respond_with(@notifications)
   end
   
   def show
     @notification = current_user.notifications.find(params[:id])
     @notification.read!
+    
+    respond_with(@notification)
   end
   
   def destroy
     @notification = current_user.notifications.find(params[:id])
     @notification.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(notifications_url) }
-    end
+    respond_with(@notification)
   end
   
   def show_window

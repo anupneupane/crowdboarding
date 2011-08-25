@@ -1,5 +1,6 @@
 class AttendancesController < ApplicationController
   load_and_authorize_resource
+  
   # POST /create
   def create
     @event = Event.find(params[:event_id])
