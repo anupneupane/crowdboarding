@@ -13,7 +13,11 @@ Crowdboarding::Application.routes.draw do
   resources :attendances, :only => [:create, :destroy]
   resources :tags, :only => [:index, :show]
   resources :authentications, :only => [:index, :create, :destroy]
-  resources :notifications
+  resources :notifications, :only => [:index, :destroy, :show] do
+    collection do
+      get :show_window
+    end
+  end
     
   # Static pages
   match 'contact' => 'home#contact', :as => :contact

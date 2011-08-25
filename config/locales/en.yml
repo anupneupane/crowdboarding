@@ -10,6 +10,7 @@ en:
       time: "%H:%M"
       event: "%A, %e %B %Y, %H:%M"
       notification: "%e %B %Y, %H:%M"
+      small_notification: "%e %B %Y"
       only_second: "%S"
       
   formtastic:

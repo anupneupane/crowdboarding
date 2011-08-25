@@ -13,6 +13,11 @@ class NotificationsController < ApplicationController
     end
   end
   
+  def show
+    @notification = current_user.notifications.find(params[:id])
+    @notification.read!
+  end
+  
   def destroy
     @notification = current_user.notifications.find(params[:id])
     @notification.destroy
@@ -20,5 +25,14 @@ class NotificationsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(notifications_url) }
     end
+  end
+  
+  def show_window
+    @small_notifications = current_user.notifications.order("read = #{ActiveRecord::Base.connection.quoted_true}, created_at DESC").limit(3)
+    @small_notifications.each(&:read!)
+    respond_to do |format|
+      format.js { render :layout => false }
+    end
+    
   end
 end
