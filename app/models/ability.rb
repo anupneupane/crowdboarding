@@ -20,6 +20,7 @@ class Ability
       can :create, City
       can :create, Tag
       can :destroy, Attendance, :user_id => user.id
+      can :destroy, Notification, :user_id => user.id
       can :read, :all
     else
       can :read, :all
