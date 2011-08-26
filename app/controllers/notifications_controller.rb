@@ -1,5 +1,5 @@
 class NotificationsController < ApplicationController
-  respond_to :html, :xml, :json
+  respond_to :html, :xml, :json, :js
   load_and_authorize_resource
   
   # GET /notifications
