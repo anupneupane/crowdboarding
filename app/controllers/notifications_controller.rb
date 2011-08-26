@@ -1,6 +1,8 @@
 class NotificationsController < ApplicationController
   respond_to :html, :xml, :json, :js
   load_and_authorize_resource
+  # not yet implemented
+  skip_authorize_resource :only => :show_window
   
   # GET /notifications
   def index
