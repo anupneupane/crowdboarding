@@ -3,8 +3,14 @@ if(!notification_body.find('div.notification').length){
 	$('div#notifications_window div:first').fadeOut();
 	notification_body.hide().html('<%= escape_javascript(render(:partial => "small_notification", :collection => @small_notifications)) %>').fadeIn();
 	var number_of_notifications = $('li#notifications a span');
+	<% @small_notifications.each(&:read!) %>
 	number_of_notifications.animate({opacity: 0.1}, 300, function() {
 		$(this).text('<%= current_user.unread_notifications.count %>');
+		if($(this).html() == '0'){ 
+			var notifications_li = $('li#notifications');
+			notifications_li.addClass('highlighted');
+			notifications_li.removeClass('highlighted_notification');
+		}
 	}).animate({opacity: 1}, 300);
 	notification_body.find('div.notification').hover(function(){
 		$(this).toggleClass('hover');

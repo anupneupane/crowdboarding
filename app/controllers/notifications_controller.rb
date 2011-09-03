@@ -29,7 +29,6 @@ class NotificationsController < ApplicationController
   
   def show_window
     @small_notifications = current_user.notifications.order("read = #{ActiveRecord::Base.connection.quoted_true}, created_at DESC").limit(5)
-    @small_notifications.each(&:read!)
     respond_to do |format|
       format.js { render :layout => false }
     end

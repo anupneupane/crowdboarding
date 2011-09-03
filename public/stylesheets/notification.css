@@ -2,13 +2,13 @@
 .notifications .notification {
   clear: both;
   border-bottom: 1px solid #eeeeee;
-  background: url(/images/icons/map_12.png) no-repeat 4px 9px;
   padding: 5px 0 5px 20px;
 }
-/* line 9, ../../app/stylesheets/notification.sass */
+/* line 8, ../../app/stylesheets/notification.sass */
 .notifications .notification span.date {
   font-size: 0.9em;
   color: #666666;
+  display: block;
 }
 /* line 12, ../../app/stylesheets/notification.sass */
 .notifications .notification a.delete {
@@ -28,6 +28,6 @@
   display: none;
 }
 /* line 23, ../../app/stylesheets/notification.sass */
-.notifications .notification.hover {
+.notifications .notification:hover {
   background-color: #f0f0f0;
 }

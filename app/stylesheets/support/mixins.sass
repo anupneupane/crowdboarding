@@ -31,7 +31,8 @@
 @mixin gray_button
 	+standard_button
 	color: $almost_black
-	@include linear-gradient(color-stops(#FEFEFE, #ddd))
+	background: $invisible_gray 
+	// @include linear-gradient(color-stops(#FEFEFE, #ddd))
 	padding: 5px 10px
 
 @mixin blue_button
@@ -43,7 +44,8 @@
 @mixin red_button
 	+standard_button
 	color: $almost_white
-	@include linear-gradient(color-stops($countercrowdboarding, darken($countercrowdboarding, 10%)))
+	background: $countercrowdboarding
+	// @include linear-gradient(color-stops($countercrowdboarding, darken($countercrowdboarding, 10%)))
 	padding: 5px 10px
 
 @mixin gray_button_plus
@@ -53,4 +55,7 @@
 	padding: 5px 10px
 	
 @mixin button_hover
-	opacity: 0.6
+	color: $dirty_white
+	background: $almost_black
+	@include linear-gradient(color-stops(#555, #666))
+	

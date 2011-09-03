@@ -6,6 +6,7 @@
 @import "compass/reset"
 @import "compass/utilities/general/clearfix"
 @import "compass/css3/opacity"
+@import "compass/css3/box-shadow"
 @import "960/grid"
 @import "support/colors"
 @import "support/mixins"
@@ -43,12 +44,16 @@ body
 				li
 					padding-top: 12px
 					float: left
-					margin-left: 25px
+					margin-left: 5px
 				li.avatar	
 					padding-top: 9px
-					margin-left: 5px
+					margin-left: 20px
 				li.avatar img
 					+border-radius(2px)
+				li.highlighted_notification
+					margin-left: 20px
+				li.highlighted
+					margin-left: 20px
 				li.highlighted a
 					+gray_button
 				li.highlighted_notification a
@@ -67,33 +72,45 @@ body
 				li a.hover
 					+button_hover
 		#notifications_window
+			@include box-shadow($dark_gray 8px 8px 15px)
 			position: absolute
-			top: 45px
-			left: 645px
+			top: 40px
+			left: 506px
 			width: 293px
 			border: 1px solid $dark_gray
 			background-color: $almost_white
 			padding-bottom: 5px
 			display: none
 			header
-				border-bottom: 1px solid $dark_gray
 				background-color: $dirty_white
+				padding: 10px 5px
+				height: 20px
+				background-color: $countercrowdboarding
+				color: $almost_white
 				a.show_all
-					float: right
-					margin-right: 10px
-				span.title
-					color: $almost_black
-					font-size: 1.3em
-					padding-left: 10px
+					margin-left: 10px
+					font-weight: bold
+					text-decoration: none
+					color: $almost_white
 			#notifications_body
 				position: relative
-				color: black
+				color: $almost_black
 				min-height: 150px
-				padding: 10px
 				.notification
 					border-bottom: 1px solid $invisible_gray
 					padding: 5px 0
+					padding: 10px
 					cursor: pointer
+					span.date
+						font-size: 0.8em
+						color: $gray_for_texts
+						display: block
+						text-align: right
+						font-weight: normal !important
+				.new_notification
+					background-color: $invisible_gray
+					font-weight: bold
+					border-bottom: 1px solid #aaa
 				.notification.hover
 					opacity: 0.6
 	#wrapper_navigation

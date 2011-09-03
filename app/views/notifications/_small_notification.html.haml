@@ -1,4 +1,3 @@
-.notification{"data-id" => "#{small_notification.id}"}
+.notification{"data-id" => "#{small_notification.id}", :class => small_notification.read ? 'old_notification' : 'new_notification'} 
 	= small_notification.body
 	%span.date= l(small_notification.created_at.in_time_zone, :format => :small_notification)
-	= small_notification.read

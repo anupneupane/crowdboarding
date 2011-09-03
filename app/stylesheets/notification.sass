@@ -4,11 +4,11 @@
 	.notification
 		clear: both
 		border-bottom: 1px solid $invisible_gray
-		background: url(/images/icons/map_12.png) no-repeat 4px 9px
 		padding: 5px 0 5px 20px
 		span.date
 			font-size: 0.9em
 			color: $gray_for_texts
+			display: block
 		a.delete
 			background: url(/images/icons/delete_7.gif) no-repeat 0 0
 			width: 7px
@@ -20,5 +20,6 @@
 				display: none
 		a.delete.hidden
 			display: none
-	.notification.hover
+	.notification:hover
 		background-color: $dirty_white
+		
