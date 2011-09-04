@@ -7,7 +7,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require crowdboarding
 //= require autocomplete-rails
 //= require spin.min
-//= require crowdboarding
+//= require unobtrusive-google-maps.jquery
 
