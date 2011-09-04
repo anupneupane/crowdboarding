@@ -10,8 +10,8 @@
 		.block
 			%h4 Hot items
 			%p
-				- tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
-					= link_to tag.name, tag_path(tag.id), :class => css_class
+				- #tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
+					=# link_to tag.name, tag_path(tag.id), :class => css_class
 			.see_all
 				=link_to "see more", "#"
 		.block		
