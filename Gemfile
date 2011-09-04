@@ -1,15 +1,23 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.10'
+gem 'rails', '3.1.0'
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails', "  ~> 3.1.0"
+  gem 'coffee-rails', "~> 3.1.0"
+  gem 'uglifier'
+end
 
 gem 'devise'
 gem 'cancan'
 gem 'jquery-rails'
 gem 'haml'
-gem 'formtastic', '1.2.4'
-gem 'compass'
+gem 'formtastic', "2.0.0.rc5 "
+gem "compass", :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31'
 gem 'compass-960-plugin'
-# gem 'typus'#, :git => 'git://github.com/typus/typus.git'
+gem 'typus', :git => 'git://github.com/typus/typus.git'
 gem 'ancestry'
 gem 'geocoder'
 gem 'gmaps4rails'
@@ -45,4 +53,6 @@ group :development, :test do
   gem 'growl'
   # gem 'guard-mozrepl'
   gem 'guard-livereload'
+  # Pretty printed test output
+  gem 'turn', :require => false
 end

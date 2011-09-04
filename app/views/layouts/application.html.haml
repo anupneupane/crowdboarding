@@ -10,8 +10,10 @@
 		%meta{:name => "keywords", :content => get_keywords}
 		%meta{:name => "description", :content => get_description}		
 		%meta{:name => "author", :content => "Victor Martin and Michael Koper"}
-		= stylesheet_link_tag 'grid', 'text', 'home', 'event', 'user', 'notification', 'authentication', 'devise', 'formtastic', 'formtastic_changes', 'pepper-grinder/jquery-ui.custom'
-		= javascript_include_tag 'jquery.min', 'jquery-ui.custom.min', 'rails.js', 'autocomplete-rails.js', 'spin.min','application'
+		=# stylesheet_link_tag 'grid', 'text', 'home', 'event', 'user', 'notification', 'authentication', 'devise', 'formtastic', 'formtastic_changes', 'pepper-grinder/jquery-ui.custom'
+		=# javascript_include_tag 'jquery.min', 'jquery-ui.custom.min', 'rails.js', 'autocomplete-rails.js', 'spin.min','application'
+		= javascript_include_tag "application"
+		= stylesheet_link_tag "application"
 		= yield :head
 		= csrf_meta_tag
 		%meta{:name => "viewport", :content => "initial-scale=1.0, user-scalable=no"}
