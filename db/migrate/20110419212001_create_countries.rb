@@ -8,7 +8,7 @@ class CreateCountries < ActiveRecord::Migration
     add_index :countries, :country_code, :unique => true
     
     require 'csv'
-    path = RAILS_ROOT + "/lib/iso_import_files/all_countries.csv"
+    path = Rails.root + "/lib/iso_import_files/all_countries.csv"
     CSV.foreach(path, :col_sep => ";") do |country|
       Country.create!(:name => country[0], :country_code => country[1].strip)
      end
