@@ -3,6 +3,7 @@ class Country < ActiveRecord::Base
   validates :country_code, :presence => true, :uniqueness => true, :length => { :is => 2 }
 
   has_many :cities
+  has_many :users
   
   before_create :downcase_name, :titleize_name, :downcase_country_code
   

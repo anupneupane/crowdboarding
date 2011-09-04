@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   has_many :authentications
   has_many :notifications
   belongs_to :default_city, :class_name => 'City'
+  belongs_to :country
     
   reverse_geocoded_by :current_location_latitude, :current_location_longitude,
     :address => :current_location_address

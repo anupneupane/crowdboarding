@@ -17,6 +17,11 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
+    
+    # City 
+    city = City.find_or_create_by_name_and_country_id(params[:user][:default_city], params[:user][:country_id])
+    params[:user][:default_city_id] = city.id
+    params[:user].delete :default_city
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

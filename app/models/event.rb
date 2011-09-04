@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
   validates :name, :presence => true, :length => { :maximum => 100 }
   validates :contact_details, :length => { :maximum => 100 }
-  validates :city_name, :presence => true
+  validates :city_id, :presence => true
   validates :starts_at, :presence => true
   validates :street, :presence => true
   validates :country_id, :presence => true
@@ -14,7 +14,7 @@ class Event < ActiveRecord::Base
   
   acts_as_taggable
   
-  attr_accessible :name, :description, :street, :lat, :lng, :contact_details, :tag_tokens, :country_id, :city_name
+  attr_accessible :name, :description, :street, :lat, :lng, :contact_details, :tag_tokens, :country_id, :city_id
   
   belongs_to :user
   belongs_to :city
@@ -26,12 +26,10 @@ class Event < ActiveRecord::Base
   
   attr_reader :tag_tokens
   
-  after_create :find_or_create_city
   after_create :notify_friends
   after_create :send_tweet
   
-  geocoded_by :address,
-    :latitude => :lat, :longitude => :lng
+  geocoded_by :address, :latitude => :lat, :longitude => :lng
   after_validation :geocode, :if => :change_address?
   
   
@@ -43,7 +41,7 @@ class Event < ActiveRecord::Base
   end
   
   def address
-    [street, city_name, country.try(:name)].compact.join(', ')
+    [street, city.name, country.try(:name)].compact.join(', ')
   end
   
   def size_status
@@ -74,7 +72,7 @@ class Event < ActiveRecord::Base
   def weather
     # We really need a rescue here? If so, please rescue with an exception
     begin
-      barometer = Barometer.new("#{self.city_name}, #{self.country.name}")
+      barometer = Barometer.new("#{self.city.name}, #{self.country.name}")
       weather = barometer.measure
       forecast = weather.for(self.starts_at)
     rescue ArgumentError 
@@ -109,10 +107,10 @@ class Event < ActiveRecord::Base
     if Rails.env == 'production'
       if self.country.name.downcase == 'spain'
         configure_twitter "ES"
-        Twitter.update("Nuevo evento en #{self.city_name}, #{self.country.name} http://www.crowdboarding.com/events/#{self.id}")
+        Twitter.update("Nuevo evento en #{self.city.name}, #{self.country.name} http://www.crowdboarding.com/events/#{self.id}")
       else
         configure_twitter "EN"
-        Twitter.update("New event in #{self.city_name}, #{self.country.name} http://www.crowdboarding.com/events/#{self.id}")
+        Twitter.update("New event in #{self.city.name}, #{self.country.name} http://www.crowdboarding.com/events/#{self.id}")
       end
     end
   end
@@ -127,7 +125,8 @@ class Event < ActiveRecord::Base
     end
     
     def find_or_create_city
-      City.find_or_create_by_name_and_country_id(self.city_name, self.country_id)
+      city = City.find_or_create_by_name_and_country_id(self.city.name, self.country_id)
+      self.city = city
       true
     end
     
@@ -153,6 +152,6 @@ class Event < ActiveRecord::Base
     end
     
     def change_address?
-      street_changed? || city_name_changed?
+      street_changed? || city_id_changed?
     end
 end

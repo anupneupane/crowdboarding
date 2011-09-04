@@ -1,4 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
+  autocomplete :city, :name, :full => false
+  
   def create
     super
     session[:omniauth] = nil unless @user.new_record?

@@ -30,7 +30,7 @@ namespace :db do
       event.created_at = 2.years.ago..Time.now
       event.starts_at = 1.weeks.ago..1.weeks.from_now
       event.user_id = (rand * User.count).to_i
-      event.city_name = "Madrid"
+      event.city_id = 1
       event.description = Populator.paragraphs(1..3)
       event.address = Faker::Address.street_address
       event.lat = (rand(-100000) / -100000.0)

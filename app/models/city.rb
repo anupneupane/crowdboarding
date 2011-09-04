@@ -3,6 +3,10 @@ class City < ActiveRecord::Base
   
   before_create :downcase_name
   belongs_to :country
+
+  def capitalize_name
+    self.name.split(' ').each{|word| word.capitalize}.join(' ')
+  end
   
   private
     def downcase_name
