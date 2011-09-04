@@ -57,7 +57,7 @@ module ApplicationHelper
     title = []
     # Exceptions
     prefix_title = if controller_name == "events" && action_name == "show" && @event.present?
-      t('titles.events.show', :name => @event.name, :city => @event.city_name)
+      t('titles.events.show', :name => @event.name, :city => @event.city.name)
     elsif controller_name == "users" && action_name == "show" && @user.present?
       t('titles.users.show', :name => @user.print_name)
     end

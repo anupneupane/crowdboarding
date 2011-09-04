@@ -32,6 +32,6 @@ class NotificationsController < ApplicationController
     respond_to do |format|
       format.js { render :layout => false }
     end
-    
+    @small_notifications.each(&:read!)
   end
 end

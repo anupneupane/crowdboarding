@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   load_and_authorize_resource
-  autocomplete :city, :name, :full => true
+  autocomplete :city, :name, :full => false, :display_value => :capitalize_name
   
   # GET /events
   # GET /events.xml
@@ -58,7 +58,12 @@ class EventsController < ApplicationController
       params[:event]["starts_at(5i)"] = nil
       params[:event][:starts_at] = nil
     end
-    
+  
+    # City 
+    city = City.find_or_create_by_name_and_country_id(params[:event][:city], params[:event][:country_id])
+    params[:event][:city_id] = city.id
+    params[:event].delete :city
+  
     @event = current_user.events.new(params[:event])
     @event.starts_at = datetime_starts_at
     respond_to do |format|
@@ -79,6 +84,12 @@ class EventsController < ApplicationController
       params[:event]["starts_at(5i)"] = nil
       params[:event][:starts_at] = nil
     end
+    
+    # City
+    city = City.find_or_create_by_name_and_country_id(params[:event][:city], params[:event][:country_id])
+    params[:event][:city_id] = city.id
+    params[:event].delete :city
+    
     @event = current_user.events.find(params[:id])
     @event.starts_at = datetime_starts_at
     respond_to do |format|

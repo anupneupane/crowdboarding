@@ -34,7 +34,8 @@ ActiveRecord::Schema.define(:version => 20110605163509) do
   add_index "authentications", ["user_id"], :name => "index_authentications_on_user_id"
 
   create_table "cities", :force => true do |t|
-    t.string "name", :limit => 100, :null => false
+    t.string  "name",       :limit => 100, :null => false
+    t.integer "country_id",                :null => false
   end
 
   create_table "comments", :force => true do |t|
@@ -66,10 +67,10 @@ ActiveRecord::Schema.define(:version => 20110605163509) do
     t.text     "description"
     t.string   "street",          :limit => 100
     t.integer  "country_id"
-    t.string   "city_name",       :limit => 100
     t.string   "contact_details", :limit => 100
     t.float    "lat"
     t.float    "lng"
+    t.integer  "city_id"
     t.integer  "users_count",                    :default => 0
     t.integer  "comments_count",                 :default => 0
     t.integer  "views_count",                    :default => 0
@@ -77,7 +78,7 @@ ActiveRecord::Schema.define(:version => 20110605163509) do
     t.datetime "updated_at"
   end
 
-  add_index "events", ["city_name"], :name => "index_events_on_city_name"
+  add_index "events", ["city_id"], :name => "index_events_on_city_id"
   add_index "events", ["country_id"], :name => "index_events_on_country_id"
   add_index "events", ["starts_at"], :name => "index_events_on_starts_at"
 
@@ -136,6 +137,7 @@ ActiveRecord::Schema.define(:version => 20110605163509) do
     t.text     "quiver"
     t.date     "birthdate"
     t.integer  "default_city_id"
+    t.integer  "country_id"
     t.integer  "profile_views",                             :default => 0
     t.boolean  "event_friend_updates",                      :default => true
     t.float    "current_location_latitude"

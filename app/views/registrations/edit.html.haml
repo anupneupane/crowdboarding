@@ -4,7 +4,12 @@
 	= f.semantic_errors
 	= f.inputs do
 		= f.input :nickname, :input_html => { :placeholder => "Enter a name for the Event ( example: Friday boarding in Retiro! )" }
-		= f.inputs :name, :default_city, :birthdate
+		= f.input :name
+		= f.input :country, :prompt => "Please select a country"
+		%li.string.input-optional.stringish#user_city_input
+			%label.label Default city
+			= f.autocomplete_field :default_city, autocomplete_city_name_events_path, :value => (@user.default_city ? @user.default_city.name : '')
+		= f.input :birthdate
 		= f.input :avatar, :as => :file
 		= f.input :bio, :input_html => { :rows => 4, :placeholder => "Tell us something about you :)"}
 		= f.input :quiver, :input_html => { :rows => 6, :placeholder => "What do you use for riding?"}
