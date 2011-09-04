@@ -8,5 +8,6 @@
 	*= require formtastic_ie7
 
 	*= require_tree . 
+	*= require vendor
 */
 
