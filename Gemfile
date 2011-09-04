@@ -33,8 +33,8 @@ gem 'kaminari'
 
 
 group :production do
-  gem 'execjs'
-  gem 'therubyracer'
+  # gem 'execjs'
+  # gem 'therubyracer'
 end
 
 group :production do
