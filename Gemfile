@@ -33,6 +33,10 @@ gem 'omniauth', '>= 0.2.6'
 gem 'twitter'
 gem 'kaminari'
 
+group :production do
+  gem 'pg'
+end
+
 group :development, :test do
   gem 'hpricot'
   gem 'capybara'
