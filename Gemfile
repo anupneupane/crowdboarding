@@ -23,9 +23,6 @@ gem 'geocoder'
 gem 'gmaps4rails'
 gem 'aws-s3'
 gem "paperclip"
-# Temperary test data generators
-gem 'populator'
-gem 'faker'
 gem 'barometer'
 gem 'acts-as-taggable-on'
 gem 'rails3-jquery-autocomplete'
@@ -33,9 +30,12 @@ gem 'omniauth', '>= 0.2.6'
 gem 'twitter'
 gem 'kaminari'
 
+gem 'execjs'
+
+# gem 'therubyracer'
+
 group :production do
   gem 'pg'
-  gem 'therubyracer-heroku'
 end
 
 group :development, :test do
@@ -50,6 +50,7 @@ group :development, :test do
   gem 'sqlite3'
   # gem 'pg'
   gem 'ruby-debug19'
+  # Guard gems
   # gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
   gem 'guard'
   gem 'guard-rspec'
@@ -60,4 +61,7 @@ group :development, :test do
   gem 'guard-livereload'
   # Pretty printed test output
   gem 'turn', :require => false
+  # Data generators
+  gem 'populator'
+  gem 'faker'
 end

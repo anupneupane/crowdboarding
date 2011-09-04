@@ -1,8 +1,8 @@
 %h2= raw("Events close to #{@current_location} #{("<span>("+link_to('not your city?', edit_user_registration_path)+")</span>") if !@stored_city and @current_user}")
 = paginate @events
 .events
-	=render @events
-= paginate @events
+	=#render @events
+=# paginate @events
 - content_for :sidebar_right do
 	=render :partial => "home/sidebar"
 -# #splash
