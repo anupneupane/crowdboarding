@@ -28,11 +28,11 @@
 					%ul
 						- if user_signed_in?
 							%li.highlighted_plus=link_to raw("<span>#{t('header.add_event')}</span>"), new_event_path
-							%li.small=link_to t('header.logout'), destroy_user_session_path
 							%li{:class => (current_user.unread_notifications.size == 0 ? "highlighted" : "highlighted_notification"), :id => "notifications"}
 								= link_to raw("<span>#{current_user.unread_notifications.size}</span>"), show_window_notifications_path, :remote => true
 							%li.avatar=link_to raw("#{image_tag current_user.avatar(:small), :width => 25, :height => 25}"), user_path(current_user)
 							%li= link_to current_user.nickname, user_path(current_user)
+							%li.small=link_to "[x]", destroy_user_session_path
 						- else
 							%li.highlighted= link_to t('header.register'), new_user_registration_path
 							%li= link_to t('header.login'), new_user_session_url
