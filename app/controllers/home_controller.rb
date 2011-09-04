@@ -14,7 +14,7 @@ class HomeController < ApplicationController
     @events = Event.from_now.recent.near(@current_location).page(params[:page]).per(10)
     
     @events_from_now = Event.from_now.limit(5)
-    @active_users = User.limit(10)
-    # @tags = Event.xtag_counts_on(:tags)
+    @active_users = User.limit(10).order("id DESC")
+    @tags = Event.tag_counts_on(:tags)
   end
 end
