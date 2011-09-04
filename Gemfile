@@ -30,6 +30,10 @@ gem 'omniauth', '>= 0.2.6'
 gem 'twitter'
 gem 'kaminari'
 
+gem 'execjs'
+
+# gem 'therubyracer'
+
 group :production do
   gem 'pg'
 end
