@@ -127,7 +127,7 @@ class Event < ActiveRecord::Base
     end
     
     def find_or_create_city
-      City.find_or_create_by_name(self.city_name)
+      City.find_or_create_by_name_and_country_id(self.city_name, self.country_id)
       true
     end
     

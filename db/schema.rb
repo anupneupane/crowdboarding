@@ -34,7 +34,8 @@ ActiveRecord::Schema.define(:version => 20110605163509) do
   add_index "authentications", ["user_id"], :name => "index_authentications_on_user_id"
 
   create_table "cities", :force => true do |t|
-    t.string "name", :limit => 100, :null => false
+    t.string  "name",       :limit => 100, :null => false
+    t.integer "country_id",                :null => false
   end
 
   create_table "comments", :force => true do |t|
