@@ -31,11 +31,6 @@ gem 'twitter'
 gem 'kaminari'
 
 group :production do
-  # gem 'execjs'
-  # gem 'therubyracer'
-end
-
-group :production do
   gem 'pg'
 end
 
