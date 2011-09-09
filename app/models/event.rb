@@ -41,7 +41,7 @@ class Event < ActiveRecord::Base
   end
   
   def address
-    [street, city.name, country.try(:name)].compact.join(', ')
+    [street, city.try(:name), country.try(:name)].compact.join(', ')
   end
   
   def size_status
