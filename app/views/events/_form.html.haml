@@ -5,7 +5,7 @@
 		= f.input :description, :input_html => { :rows => 6 }
 		= f.input :country, :prompt => "Please select a country"
 		%li.string.input-optional.stringish#event_city_input
-			%label.label City
+			%label.label{:for => "event_city"} City
 			= f.autocomplete_field :city, autocomplete_city_name_events_path, :value => (@event.city ? @event.city.name : '')
 		= f.input :street, :input_html => { :placeholder => "Enter the street name" }
 		= f.input :contact_details, :input_html => { :placeholder => "Enter your contact details" }
