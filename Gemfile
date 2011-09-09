@@ -30,8 +30,6 @@ gem 'omniauth', '>= 0.2.6'
 gem 'twitter'
 gem 'kaminari'
 
-
-
 group :production do
   # gem 'execjs'
   # gem 'therubyracer'
@@ -50,6 +48,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'factory_girl_rails'
   gem 'mongrel', '1.2.0.pre2'
+  gem 'thin'
   gem 'sqlite3'
   # gem 'pg'
   gem 'ruby-debug19'
