@@ -1,7 +1,8 @@
 .event
 	.event_highlights
 		.time_left.button
-			=distance_of_time_in_short_words(event.starts_at)
+			%span=event.days_left
+			days
 		.assistants.button
 			%span=event.attendances.size
 			assistans
