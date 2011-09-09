@@ -1,0 +1,8 @@
+# Use the README file as a reference to customize settings.
+
+Attendance:
+  fields:
+    default: user_id, event_id
+    form: user_id, event_id
+  relationships: 
+  application: Application

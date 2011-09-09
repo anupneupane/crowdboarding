@@ -1,12 +1,4 @@
-<%
-  values = if @resource.const_defined?(attribute.upcase)
-             @resource::const_get(attribute.upcase)
-           else
-             @resource.send(attribute)
-           end
-%>
-
-<li id="<%= attribute %>">
+<li id="<%= attribute_id %>">
   <%= form.label attribute, label_text %>
-  <%= form.select attribute, values, options.merge!(:include_blank => false) %>
+  <%= form.select attribute, @resource.send(attribute.pluralize), options, html_options %>
 </li>

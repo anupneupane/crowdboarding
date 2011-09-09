@@ -3,35 +3,61 @@
   title(page_title)
 %>
 
-<% content_for :sidebar, build_sidebar %>
+<% content_for :main_grid do %>
 
-<h2>
-  <%= page_title %>
-  <small><%= list_actions %></small>
-</h2>
+  <h2>
+    <%= page_title %>
+    <small><%= list_actions %></small>
+  </h2>
 
-<%= display_flash_message %>
+  <%= display_flash_message %>
 
-<%= render 'index' %>
+  <%= render 'index' %>
 
-<ul class="predefined_filters">
-  <li><%= link_to Typus::I18n.t("All"), :action => 'index' %> (<%= set_context.count %>)</li>
-  <% predefined_filters.each do |filter, action, scope| %>
-    <% url = action.is_a?(String) ? params.dup.cleanup.merge(:action => action) : action %>
-    <li><%= link_to Typus::I18n.t(filter), url %> <%= "(#{@resource.send(scope).count})" if scope && @resource.respond_to?(scope) %></li>
+  <ul class="predefined_filters">
+    <li><%= link_to Typus::I18n.t("All"), params.dup.cleanup.merge(:action => 'index') %> (<%= resource.count %>)</li>
+
+    <% scopes.each do |scope| %>
+      <li><%= link_to Typus::I18n.t(scope.humanize), :scope => scope %> <%= "(#{@resource.send(scope).count})" %></li>
+    <% end %>
+
+    <% predefined_filters.each do |filter, action, scope| %>
+      <% url = action.is_a?(String) ? params.dup.cleanup.merge(:action => action) : action %>
+      <li><%= link_to Typus::I18n.t(filter), url %> <%= "(#{@resource.send(scope).count})" if scope && @resource.respond_to?(scope) %></li>
+    <% end %>
+
+    <% if resource.any? && (formats = resource.typus_options_for(:export).extract_settings).any? %>
+      <li>|</li>
+      <% formats.each do |format| %>
+        <li><%= link_to format.upcase, :format => format %></li>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <% if (build_filters || search) %>
+    <div class="filters">
+      <%= build_filters %>
+      <%= search %>
+    </div>
   <% end %>
-</ul>
 
-<% if (build_filters || search) %>
-  <div class="filters">
-    <%= build_filters %>
-    <%= search %>
-  </div>
+  <% if @items.any? -%>
+    <% if controller.respond_to?(:bulk) %>
+      <%= build_actions { build_list(@resource, fields, @items) } %>
+    <% else %>
+      <%= build_list(@resource, fields, @items) %>
+    <% end %>
+    <%= paginate(@items, Typus.pagination) %>
+  <% else %>
+    <p><%= Typus::I18n.t("No %{resources} found.", :resources => @resource.model_name.human(:count => 2)) %></p>
+  <% end %>
+
 <% end %>
 
-<% if @items.any? -%>
-  <%= build_list(@resource, fields, @items) %>
-  <%= will_paginate(@items, Typus.pagination) %>
-<% else %>
-  <p><%= Typus::I18n.t("No %{resources} found.", :resources => @resource.model_name.human.downcase.pluralize) %></p>
-<% end %>
+<div class="grid_2">
+  <%= build_sidebar %>
+</div>
+
+<div class="grid_10">
+  <%= yield :main_grid %>
+</div>

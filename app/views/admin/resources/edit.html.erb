@@ -3,24 +3,38 @@
   title(page_title)
 %>
 
-<% content_for :sidebar do %>
-  <% build_sidebar.present? ? build_sidebar : render("admin/templates/profile_sidebar") %>
+<% content_for :main_grid do %>
+  <h2>
+    <%= page_title %>
+    <small><%= list_actions %></small>
+  </h2>
+
+  <% if headless_mode? && params[:action] == 'edit' %>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        parent.Typus.resource_attribute = "#<%= params[:attribute] %>";
+        parent.Typus.resource_id = '<%= @item.id %>';
+        parent.Typus.resource_to_label = '<%= @item.to_label %>';
+        <% if flash.keys.any? && !params[:_input] %>
+          parent.Typus.parent_location_reload = true;
+        <% end %>
+      });
+    </script>
+  <% end %>
+
+  <%= display_flash_message %>
+  <%= render 'edit' %>
+
+  <% locals = { :options => params.dup.cleanup.merge!(:action => 'update') } %>
+  <%= render 'form', locals %>
+
+  <%= typus_relationships unless headless_mode? %>
 <% end %>
 
-<h2>
-  <%= page_title %>
-  <small><%= list_actions %></small>
-</h2>
+<div class="grid_2">
+  <%= build_sidebar || render("admin/templates/profile_sidebar") %>
+</div>
 
-<%= display_link_to_previous %>
-<%= display_flash_message %>
-<%= render 'edit' %>
-
-<%
-  options = params.dup.cleanup.merge!(:action => 'update')
-  button = Typus::I18n.t("Save %{resource}", :resource => @resource.model_name.human)
-%>
-
-<%= render :partial => 'form', :locals => { :options => options, :button => button } %>
-
-<%= typus_relationships %>
+<div class="grid_8">
+  <%= yield :main_grid %>
+</div>

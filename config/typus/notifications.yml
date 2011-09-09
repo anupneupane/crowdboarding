@@ -1,0 +1,8 @@
+# Use the README file as a reference to customize settings.
+
+Notification:
+  fields:
+    default: user_id, body, read
+    form: user_id, body, read
+  relationships: 
+  application: Application

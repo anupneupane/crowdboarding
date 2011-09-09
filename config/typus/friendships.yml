@@ -1,0 +1,8 @@
+# Use the README file as a reference to customize settings.
+
+Friendship:
+  fields:
+    default: user_id, friend_id
+    form: user_id, friend_id
+  relationships: 
+  application: Application

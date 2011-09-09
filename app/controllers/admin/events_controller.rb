@@ -1,2 +1,2 @@
-# class Admin::EventsController < Admin::ResourcesController
-# end
+class Admin::EventsController < Admin::ResourcesController
+end
