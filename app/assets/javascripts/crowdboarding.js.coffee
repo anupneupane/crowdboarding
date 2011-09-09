@@ -13,8 +13,12 @@ mouseOverHelmet = ->
     $(this).css "background-position", "0 0"
 
 showNotifyBar = ->
-  notifier = $("div#wrapper_noticebar")
-  notifier.slideDown().delay(3000).slideUp()  if notifier.length
+	notifier = $("div#wrapper_noticebar")
+	if notifier.length
+		notifier.slideDown()# .delay(3000).slideUp()  
+		notifier.find("a").click  ->
+			notifier.slideUp()
+			false
 
 clickHelmet = ->
   $("div#helmet").click ->

@@ -2,4 +2,5 @@
 	#wrapper_noticebar
 		#noticebar
 			#message{:class => flash[:notice] ? "success" : "failure"}
-				=flash[:notice] || flash[:error]
+				= flash[:notice] || flash[:error]
+				= link_to "[x]", ""
