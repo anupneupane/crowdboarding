@@ -1,4 +1,5 @@
 %h2= raw("Events close to #{@current_location} #{("<span>("+link_to('not your city?', edit_user_registration_path)+")</span>") if !@stored_city and @current_user}")
+= render :partial => "events/search_form"
 = paginate @events
 .events
 	=render @events

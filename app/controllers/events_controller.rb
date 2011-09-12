@@ -6,10 +6,14 @@ class EventsController < ApplicationController
   # GET /events.xml
   def index
       conditions = []
-      conditions << Event.escape_sql(["country_id = ?", params[:country_id]]) if params[:country_id].present?
-      conditions << Event.escape_sql(["LOWER(city_name) LIKE LOWER(?)", "%#{params[:city_name].downcase}%"]) if params[:city_name].present?
+      conditions << Event.escape_sql(["events.country_id = ?", params[:country_id]]) if params[:country_id].present?
+      conditions << Event.escape_sql(["LOWER(cities.name) LIKE LOWER(?)", "%#{params[:city_name].downcase}%"]) if params[:city_name].present?
       
-      @events = Event.where(conditions.join(" AND ")).page(params[:page]).per(10)
+      if params[:city_name].present?
+        @events = Event.joins(:city).where(conditions.join(" AND ")).page(params[:page]).per(10)
+      else
+        @events = Event.where(conditions.join(" AND ")).page(params[:page]).per(10)
+      end
       # @events = Event.joins(:taggings, :tags).where(["events.name LIKE ? OR events.city_name LIKE ? ", search_string, search_string]).page(params[:page]).per(10)
       # @events = Event.recent.page(params[:page]).per(10)
       # @events = Event.page(params[:page]).per(10)
