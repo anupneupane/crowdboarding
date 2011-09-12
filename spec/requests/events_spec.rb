@@ -8,7 +8,6 @@ describe "Events" do
     it "displays the events" do
       Factory(:event, :name => "Friday Retiro")
       visit events_path
-      # save_and_open_page
       page.should have_content("Friday Retiro")
     end
   end
