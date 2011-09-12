@@ -115,10 +115,9 @@ class Event < ActiveRecord::Base
     end
   end
   
-  protected
-    def days_left
-      ((self.starts_at - Time.now)/1.day).round()
-    end
+  def days_left
+    ((self.starts_at - Time.now)/1.day).round()
+  end
   
   private
     def minimum_tags
