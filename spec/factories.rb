@@ -20,3 +20,8 @@ Factory.define :country do |country|
   country.name "Spain"
   country.country_code "es"
 end
+
+Factory.define :notification do |notification|
+  notification.body "Lorem ipsum"
+  notification.association :user
+end

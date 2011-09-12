@@ -26,6 +26,8 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 end
 
+# Capybara.default_driver = :selenium
+
 def login!(email = "user@example.com", password = "secret")
   visit(new_user_session_path)
   within("form#user_new") do
@@ -36,7 +38,7 @@ def login!(email = "user@example.com", password = "secret")
 end
 
 def create_a_user!(email = "user@example.com", password = "secret")
-  Factory(:user, :email => email, :password => password)
+  @user = Factory(:user, :email => email, :password => password)
 end
 
 def create_user_and_login!(email = "user@example.com", password = "secret")
