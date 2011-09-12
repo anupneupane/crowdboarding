@@ -25,7 +25,6 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event.increment!(:views_count)
     @attendance = current_user.attendance(@event) if current_user
-    # @gmaps_json = @event.to_gmaps4rails
     @attenders = @event.attenders
     @weather = @event.weather
     
