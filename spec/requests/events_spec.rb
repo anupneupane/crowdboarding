@@ -4,7 +4,7 @@ describe "Events" do
   before :each do
     create_user_and_login!
   end
-  describe "GET /tasks" do
+  describe "GET /events" do
     it "displays the events" do
       Factory(:event, :name => "Friday Retiro")
       visit events_path
@@ -36,6 +36,33 @@ describe "Events" do
       click_button "Create Event"
       page.should have_content("An error occured")
       page.should have_content("Name can't be blank")
+    end
+  end
+  
+  describe "Search" do
+    before :each do
+      # Making some events in Spain (Default country factory is Spain and city is Madrid)
+      @city = Factory(:city)
+      @country = Factory(:country, :name => "Spain")
+      3.times { Factory(:event, :name => "Friday Retiro", :city => @city, :country => @country) }
+      @country2 = Factory(:country, :name => "Netherlands")
+      @city2 = Factory(:city, :name => "Amsterdam", :country => @country2)
+      2.times { Factory(:event, :name => "Friday Amsterdam", :city => @city2, :country => @country2) }
+    end
+    
+    it "should have 3 events when searching Retiro" do
+      visit events_path
+      page.should have_content("Events in")
+      select('Spain', :from => 'Country')
+      click_button('Search')
+      page.should have_content("Friday Retiro")
+    end
+    
+    it "should have 2 products when searching Amsterdam" do
+      visit events_path
+      select('Netherlands', :from => 'Country')
+      click_button('Search')
+      page.should have_content("Friday Amsterdam")
     end
   end
 end

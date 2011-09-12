@@ -8,17 +8,22 @@ end
 Factory.define :event do |event|
   event.association :user
   event.association :country
+  event.association :city
   event.name "Retiro"
   event.starts_at Time.now + 2.weeks
   event.contact_details "1234567890"
-  event.city_id 1
   event.street "Calle Alcala 177 7B"
   event.tag_tokens "Retiro Longboard"
 end
 
 Factory.define :country do |country|
-  country.name "Spain"
-  country.country_code "es"
+  country.sequence(:name) { |n| "Spain#{n}"} 
+  country.sequence(:country_code) { |n| "e#{n}"} 
+end
+
+Factory.define :city do |city|
+  city.sequence(:name) { |n| "Madrid#{n}"} 
+  city.association :country
 end
 
 Factory.define :notification do |notification|
