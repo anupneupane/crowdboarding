@@ -8,15 +8,6 @@ GIT
       fssm (>= 0.2.7)
       sass (~> 3.1)
 
-GIT
-  remote: git://github.com/typus/typus.git
-  revision: bb14c2e3ba9a662f76cd069d7224fbbe810d1862
-  specs:
-    typus (3.1.1)
-      jquery-rails
-      kaminari
-      rails (~> 3.1.0)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -325,6 +316,10 @@ GEM
       multi_json (~> 1.0.0)
       multi_xml (~> 0.2.0)
       simple_oauth (~> 0.1.5)
+    typus (3.1.2)
+      jquery-rails
+      kaminari
+      rails (~> 3.1.0)
     tzinfo (0.3.29)
     uglifier (1.0.3)
       execjs (>= 0.3.0)
@@ -381,5 +376,5 @@ DEPENDENCIES
   thin
   turn
   twitter
-  typus!
+  typus
   uglifier
