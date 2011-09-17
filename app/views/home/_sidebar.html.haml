@@ -1,26 +1,23 @@
 #sidebar
 	.sidebar_content
 		.block.first_block
-			%h4 Soon enough!
+			%h4= t('home.sidebar.soon')
 			%ul
 				- @events_from_now.each do |event|
 					%li=link_to "#{event.name} in #{time_ago_in_words(event.starts_at.in_time_zone)}", event_path(event)
 			.see_all
-				=link_to "see more", "#"
+				=link_to t('global.see_more'), "#"
 		.block
-			%h4 Hot tags
-			-# %p
-				- #tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
-					=# link_to tag.name, tag_path(tag.id), :class => css_class
+			%h4= t('home.sidebar.tags')
+			%p
+				- tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
+					= link_to tag.name, tag_path(tag.id), :class => css_class
 			.see_all
-				=link_to "see more", "#"
-		.block		
-			%h4 Latest riders
+				=link_to t('global.see_more'), "#"
+		.block.last_block
+			%h4=t('home.sidebar.riders')
 			.avatars.indent
 				- @active_users.each do |user|
 					=link_to raw("#{image_tag user.avatar(:small), :width => 25, :height => 25, :title => user.nickname}"), user_path(user)
 			.see_all
-				=link_to "see more", "#"			
-		.block.last_block		
-			%h4 Most used spots
-			%p.indent Lorem ipsum dolor sit amet, consectetur adipisicing elit
+				=link_to t('global.see_more'), "#"			

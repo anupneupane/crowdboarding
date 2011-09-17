@@ -26,6 +26,11 @@ en:
   
   global:
     edit: "edit"
+    see_more: "see more"
+    see_all: "ver todos"
+    country: "Country"
+    city: "Ciudad"
+    search: "Search"
   titles:
     default_title: Welcome at Crowdboarding.com
     suffix: Crowdboarding.com
@@ -71,7 +76,11 @@ en:
     blog_link: "#"
     twitter_link: "http://www.twitter.com/CrowdboardingEN"
     facebook_link: "#"
-    
+  home:
+    sidebar:
+      soon: "Soon enough!"
+      tags: "Hot Tags"
+      riders: "Latest riders"
   user:
     quiver: Quiver
     bio: Bio
@@ -85,10 +94,24 @@ en:
     comments: "Comments"
     no_comments: "No comments yet"
     add_comment: "Add a comment"
+    form:
+      placeholder_name: "Enter a name for the Event ( example: Friday boarding in Retiro! )"
+      placeholder_street: "The address where the event will start"
+      placeholder_details: "If anyone gets lost, how can he/she get in touch?"
+    index:
+      close: "Events close to "
+      not_your_city: "not your city?"
+    sidebar:
+      attending: "Attending"
+      join: "Join the event"
+      stop_attending: "Stop attending"
+      share: "share"
+      attenders: "attenders"
+      time_left: "time left"
   notification:
     types:
-      event_created: An new event is created.
-      new_follower: Somebody added you as a friend 
+      event_created: "Someone you follow has created a new event"
+      new_follower: "Somebody added you as a friend "
     new_notifications:
       zero: "You have no new notifications"
       one: "You have 1 new notification"

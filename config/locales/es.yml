@@ -227,6 +227,11 @@ es:
   
   global:
     edit: "editar"
+    see_more: "ver más"
+    see_all: "ver todos"
+    country: "País"
+    city: "Ciudad"
+    search: "Buscar"
   titles:
     default_title: Bienvenido en Crowdboarding.com
     suffix: Crowdboarding.com
@@ -272,6 +277,11 @@ es:
     blog_link: "#"
     twitter_link: "http://www.twitter.com/CrowdboardingES"
     facebook_link: "#"    
+  home:
+    sidebar:
+      soon: "¡A punto!"
+      tags: "Tags populares"
+      riders: "Últimos riders"
   user:
     quiver: Quiver
     bio: Bio
@@ -285,10 +295,24 @@ es:
     comments: "Comentarios"
     no_comments: "No hay ningún comentario todavía"
     add_comment: "Nuevo comentario"
+    form:
+      placeholder_name: "Por ejemplo: '¡A quemar rueda en el Retiro!'"
+      placeholder_street: "La dirección donde va a empezar el asunto"
+      placeholder_details: "Si alguien se pierde, ¿como contacta?"
+    index:
+      close: "Eventos cercanos a "
+      not_your_city: "¿no es tu ciudad?"
+    sidebar:
+      attending: "Asistiendo"
+      join: "Unirse"
+      stop_attending: "No asistir"
+      share: "compartir"
+      attenders: "asistentes"
+      time_left: "tiempo restante"
   notification:
     types:
-      event_created: Needs translation. An new event is created.
-      new_follower: Needs translation. Somebody added you as a friend
+      event_created: "Alguien a quien sigues ha creado un evento"
+      new_follower: "Alguien te ha añadido como amigo"
   welcome:
     title: "Bienvenido."
     subtitle: "Gracias por registrarte en crowboarding. ya puedes empezar a apuntarte a eventos y conocer gente increible."
