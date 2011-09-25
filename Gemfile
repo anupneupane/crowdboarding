@@ -29,6 +29,7 @@ gem 'rails3-jquery-autocomplete'
 gem 'omniauth', '>= 0.2.6'
 gem 'twitter'
 gem 'kaminari'
+gem "friendly_id", "~> 4.0.0.beta12"
 
 group :production do
   gem 'pg'

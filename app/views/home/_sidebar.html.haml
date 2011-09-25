@@ -11,7 +11,7 @@
 			%h4= t('home.sidebar.tags')
 			%p
 				- tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
-					= link_to tag.name, tag_path(tag.id), :class => css_class
+					= link_to tag.name, tag_path(tag), :class => css_class
 			.see_all
 				=link_to t('global.see_more'), "#"
 		.block.last_block

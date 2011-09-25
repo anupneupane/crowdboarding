@@ -134,7 +134,10 @@ ActiveRecord::Schema.define(:version => 20110910010530) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
+    t.string "slug"
   end
+
+  add_index "tags", ["slug"], :name => "index_tags_on_slug", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                                     :default => "",   :null => false
