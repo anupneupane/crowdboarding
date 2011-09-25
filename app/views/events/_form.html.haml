@@ -1,17 +1,17 @@
 = semantic_form_for(@event) do |f|
 	= render "shared/error_messages", :target => @event
 	= f.inputs do
-		= f.input :name, :input_html => {  :placeholder => t('event.form.placeholder_name') }
+		= f.input :name
 		= f.input :description, :input_html => { :rows => 6 }
 		= f.input :country, :prompt => "Please select a country"
 		%li.string.input-optional.stringish#event_city_input
 			%label.label{:for => "event_city"} City
 			= f.autocomplete_field :city, autocomplete_city_name_events_path, :value => (@event.city ? @event.city.name : '')
-		= f.input :street, :input_html => { :placeholder => t('event.form.placeholder_street') }
-		= f.input :contact_details, :input_html => { :placeholder => t('event.form.placeholder_details') }
+		= f.input :street
+		= f.input :contact_details
 		= f.input :tag_tokens, :as => :string
 	= f.inputs :id => "starts_at_datetime" do
-		= f.input :starts_at, :label => t('activerecord.attributes.event.enter_date'), :as => :string, :input_html => { :class => "datepicker date", :placeholder => "yyyy-mm-dd" }
+		= f.input :starts_at, :label => t('activerecord.attributes.event.enter_date'), :as => :string, :input_html => { :class => "datepicker date"}
 		%li
 			= f.label(:starts_at,  t('activerecord.attributes.event.enter_time'))
 			=f.time_select(:starts_at, {:minute_step => 15, :include_seconds => false})

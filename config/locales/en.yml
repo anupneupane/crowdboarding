@@ -16,8 +16,14 @@ en:
   formtastic:
     placeholders:
       event:
-        name: "Put a name (for example: Friday in Retiro!)"
-        address: "Enter the address"
+        name: "Enter a name for the Event ( example: Friday boarding in Retiro! )"
+        street: "The address where the event will start"
+        contact_details: "If anyone gets lost, how can he/she get in touch?"
+        starts_at: "yyyy-mm-dd"
+      user:
+        nickname: "Enter your nickname"
+        bio: "Tell us something about you :)"
+        quiver: "What do you use for riding?"
     actions:
       signin: "Sign in"
       signup: "Sign up"
@@ -94,10 +100,6 @@ en:
     comments: "Comments"
     no_comments: "No comments yet"
     add_comment: "Add a comment"
-    form:
-      placeholder_name: "Enter a name for the Event ( example: Friday boarding in Retiro! )"
-      placeholder_street: "The address where the event will start"
-      placeholder_details: "If anyone gets lost, how can he/she get in touch?"
     index:
       close: "Events close to "
       not_your_city: "not your city?"

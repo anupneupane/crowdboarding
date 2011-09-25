@@ -3,16 +3,16 @@
 =semantic_form_for(@user, :html => { :multipart => true }) do |f|
 	= f.semantic_errors
 	= f.inputs do
-		= f.input :nickname, :input_html => { :placeholder => "Enter a name for the Event ( example: Friday boarding in Retiro! )" }
+		= f.input :nickname
 		= f.input :name
 		= f.input :country, :prompt => "Please select a country"
 		%li.string.input-optional.stringish#user_city_input
 			%label.label Default city
 			= f.autocomplete_field :default_city, autocomplete_city_name_events_path, :value => (@user.default_city ? @user.default_city.name : '')
-		= f.input :birthdate
+		= f.input :birthdate, :start_year => Date.today.year, :end_year => Date.today.year - 100
 		= f.input :avatar, :as => :file
-		= f.input :bio, :input_html => { :rows => 4, :placeholder => "Tell us something about you :)"}
-		= f.input :quiver, :input_html => { :rows => 6, :placeholder => "What do you use for riding?"}
+		= f.input :bio, :input_html => { :rows => 4, :placeholder => t('formtastic.placeholders.user.bio') }
+		= f.input :quiver, :input_html => { :rows => 6, :placeholder => t('formtastic.placeholders.user.quiver') }
 		
 	= f.buttons
 %h3 Cancel my account

@@ -217,8 +217,10 @@ es:
   formtastic:
     placeholders:
       event:
-        name: "Pon un nombre (por ejemplo: Viernes en Retiro!)"
-        address: "Enter the address"
+        name: "Por ejemplo: '¡A quemar rueda en el Retiro!'"
+        street: "La dirección donde va a empezar el asunto"
+        contact_details: "Si alguien se pierde, ¿como contacta?"
+        starts_at: "yyyy-mm-dd"
     actions:
       signin: "Entrar"
       signup: "Registrate"
@@ -295,10 +297,6 @@ es:
     comments: "Comentarios"
     no_comments: "No hay ningún comentario todavía"
     add_comment: "Nuevo comentario"
-    form:
-      placeholder_name: "Por ejemplo: '¡A quemar rueda en el Retiro!'"
-      placeholder_street: "La dirección donde va a empezar el asunto"
-      placeholder_details: "Si alguien se pierde, ¿como contacta?"
     index:
       close: "Eventos cercanos a "
       not_your_city: "¿no es tu ciudad?"
