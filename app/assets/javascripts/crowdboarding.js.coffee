@@ -15,10 +15,15 @@ mouseOverHelmet = ->
 showNotifyBar = ->
 	notifier = $("div#wrapper_noticebar")
 	if notifier.length
-		notifier.slideDown()# .delay(3000).slideUp()  
-		notifier.find("a").click  ->
+		notifier.slideDown()
+		clearTimeout(window.timer)
+		window.timer = setTimeout ->
 			notifier.slideUp()
-			false
+		, 3000
+		notifier.find("a").click (event)->
+			event.preventDefault()
+			clearTimeout(window.timer)
+			notifier.slideUp()
 
 clickHelmet = ->
   $("div#helmet").click ->
