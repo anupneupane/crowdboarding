@@ -5,8 +5,6 @@
  	*= require_self
 	*= require formtastic
   *= require formtastic_changes
-	*= require formtastic_ie7
-
 	*= require_tree . 
 	*= require vendor
 */

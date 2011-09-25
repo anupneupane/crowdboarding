@@ -19,6 +19,8 @@
 		%meta{:name => "viewport", :content => "initial-scale=1.0, user-scalable=no"}
 		/[if lt IE 9]
 			<link href="/assets/ie8.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+		/[if lt IE 8]
+			<link href="/assets/formtastic_ie7.css?body=1" media="screen" rel="stylesheet" type="text/css" />
 	%body{:class => "#{show_splash? ? "splash" : ""}"}
 		#wrapper_header
 			#header
