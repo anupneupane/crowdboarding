@@ -1,7 +1,7 @@
 Crowdboarding::Application.routes.draw do
   # Devise routes
   devise_for :users, :controllers => {:registrations => 'registrations'}
-  resources :users, :only => [:show, :index, :update]
+  resources :users, :only => [:show, :index, :update, :destroy]
   
   # Resources
   resources :events do

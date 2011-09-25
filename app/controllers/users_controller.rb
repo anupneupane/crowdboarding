@@ -30,6 +30,11 @@ class UsersController < ApplicationController
         format.html { render :action => "edit" }
       end
     end
-    
+  end
+  
+  def destroy
+    user = current_user
+    user.destroy
+    redirect_to root_path, :notice => "Your account is successfuly deleted"
   end
 end

@@ -21,6 +21,7 @@ class Ability
       can :create, Tag
       can :destroy, Attendance, :user_id => user.id
       can :destroy, Notification, :user_id => user.id
+      can :destroy, User, :user_id => user.id
       can :read, :all
     else
       can :read, :all

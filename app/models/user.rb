@@ -14,14 +14,14 @@ class User < ActiveRecord::Base
   before_create :downcase_email, :create_nickname
   
   has_many :events
-  has_many :friendships
+  has_many :friendships, :dependent => :destroy
   has_many :friends, :through => :friendships
-  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", :dependent => :destroy
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
-  has_many :attendances
-  has_many :events_attended, :through => :attendances, :source => :event
-  has_many :authentications
-  has_many :notifications
+  has_many :attendances, :dependent => :destroy
+  has_many :events_attended, :through => :attendances, :source => :event, :dependent => :destroy
+  has_many :authentications, :dependent => :destroy
+  has_many :notifications, :dependent => :destroy
   belongs_to :default_city, :class_name => 'City'
   belongs_to :country
     

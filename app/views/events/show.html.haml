@@ -11,8 +11,9 @@
 	= image_tag "http://maps.google.com/maps/api/staticmap?size=700x208&sensor=false&zoom=16&center=#{@event.lat},#{@event.lng}&markers=#{@event.lat},#{@event.lng}", :id => "event_map", :class => "static_map"
 	.event_subinfo
 		.event_subinfo_container
-			.subinfo_block
-				%p.author=@event.user.nickname		
+			- if @event.user.present?
+				.subinfo_block
+					%p.author=@event.user.nickname
 			- if user_signed_in? and @event.contact_details.present?
 				.subinfo_block
 					%p.contact=@event.contact_details			
