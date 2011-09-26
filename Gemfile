@@ -14,7 +14,7 @@ gem 'devise'
 gem 'cancan'
 gem 'jquery-rails'
 gem 'haml'
-gem 'formtastic', "2.0.0.rc5 "
+gem 'formtastic'
 gem "compass", :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31'
 gem 'compass-960-plugin'
 gem 'typus', :git => 'git://github.com/typus/typus.git'
