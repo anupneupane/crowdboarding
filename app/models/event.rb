@@ -32,7 +32,6 @@ class Event < ActiveRecord::Base
   geocoded_by :address, :latitude => :lat, :longitude => :lng
   after_validation :geocode, :if => :change_address?
   
-  
   scope :recent, :order => "starts_at DESC"
   scope :from_now, :order => "starts_at ASC", :conditions => ["starts_at > ?", Time.now - 2.hour]
   
@@ -70,14 +69,18 @@ class Event < ActiveRecord::Base
   end
   
   def weather
-    # We really need a rescue here? If so, please rescue with an exception
     begin
-      barometer = Barometer.new("#{self.city.name}, #{self.country.name}")
-      weather = barometer.measure
-      forecast = weather.for(self.starts_at)
+      # If internet connection is down or it takes to long.
+      timeout(3) do 
+        barometer = Barometer.new("#{self.city.name}, #{self.country.name}")
+        weather = barometer.measure
+        forecast = weather.for(self.starts_at)
+      end
     rescue ArgumentError 
       forecast = nil
     rescue SocketError
+      forcast = nil
+    rescue Timeout::Error
       forcast = nil
     end
 
