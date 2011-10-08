@@ -7,8 +7,6 @@ class Event < ActiveRecord::Base
   validates :country_id, :presence => true
   validate :maximum_tags
   
-  # Maybe handy for the future if we would like to show iframe maps in the event show page. We use an image for now.
-  # acts_as_gmappable :lat => 'lat', :lng => "lng", :check_process => false
   geocoded_by :address, :latitude  => :lat, :longitude => :lng 
   after_validation :geocode, :if => :street_changed? 
   
@@ -52,35 +50,22 @@ class Event < ActiveRecord::Base
     end
   end
   
-  def gmaps4rails_address
-    "#{self.street}, #{self.city.try(:name)}, #{self.country.try(:name_without_comma)}"
-  end
-  
-  def gmaps4rails_infowindow
-    "<b>Longboard event</b><br/>#{self.street}, #{self.city.try(:name)}. <a href=''>#{self.user.nickname}</a>"
-  end
-  
-  def gmaps4rails_marker_picture
-   {
-    "picture" => "http://crowdboarding.heroku.com/images/gmaps_marker.png",
-    "width" => "32",
-    "height" => "32"
-   }
-  end
-  
   def weather
     begin
+      barometer = Barometer.new("#{self.city.name}, #{self.country.name}")
+      weather = Barometer::Weather.new
       # If internet connection is down or it takes to long.
-      timeout(3) do 
-        barometer = Barometer.new("#{self.city.name}, #{self.country.name}")
+      Timeout::timeout(3) do
         weather = barometer.measure
-        forecast = weather.for(self.starts_at)
       end
+      forecast = weather.for(self.starts_at)
     rescue ArgumentError 
       forecast = nil
     rescue SocketError
       forcast = nil
     rescue Timeout::Error
+      forcast = nil
+    rescue EOFError
       forcast = nil
     end
 
