@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates :name, :length => { :maximum => 100 }
   validates :nickname,:uniqueness => true, :length => { :maximum => 40 }
   
-  attr_accessible :name, :nickname, :default_city_id, :birthdate, 
+  attr_accessible :name, :nickname, :default_city_id, :birthdate, :country_id,
                   :bio, :quiver, :email, :password, :avatar,
                   :password_confirmation, :remember_me, :event_friend_updates
   
