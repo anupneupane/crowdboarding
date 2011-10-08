@@ -5,7 +5,6 @@ class Ability
     user ||= User.new # guest user (not logged in)
     # A user can manage their own events and themself
     unless user.new_record?
-      can :manage, Event, :user_id => user.id
       can :manage, User, :id => user.id
     end
     
@@ -15,7 +14,10 @@ class Ability
     elsif !user.new_record?
       can :create, Comment
       can :create, Event
-      can :create, Friendship
+      can :update, Event do |event|
+        event.user_id == user.id && event.starts_at > Time.now
+      end
+      can :create, Friendship 
       can :create, Attendance
       can :create, City
       can :create, Tag
