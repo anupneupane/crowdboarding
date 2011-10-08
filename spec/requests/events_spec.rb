@@ -22,7 +22,7 @@ describe "Events" do
       fill_in "Street", :with => "Calle Alcala 177 7B"
       fill_in "Contact details", :with => "1234567890"
       fill_in "Tag tokens", :with => "Retiro Longboard"
-      fill_in "Enter Date", :with => "2011-06-24"
+      fill_in "Enter Date", :with => "2020-06-24"
       click_button "Create Event"
       
       within('div.event') do
