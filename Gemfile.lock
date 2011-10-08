@@ -134,8 +134,6 @@ GEM
     geocoder (1.0.2)
     gherkin (2.4.18)
       json (>= 1.4.6)
-    gmaps4rails (1.1.2)
-      crack
     growl (1.0.3)
     guard (0.6.3)
       thor (~> 0.14.6)
@@ -357,7 +355,6 @@ DEPENDENCIES
   formtastic
   friendly_id (~> 4.0.0.beta12)
   geocoder
-  gmaps4rails
   growl
   guard
   guard-bundler

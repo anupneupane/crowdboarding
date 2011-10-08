@@ -20,7 +20,6 @@ gem 'compass-960-plugin'
 gem 'typus', :git => 'git://github.com/typus/typus.git'
 gem 'ancestry'
 gem 'geocoder'
-gem 'gmaps4rails'
 gem 'aws-s3'
 gem "paperclip"
 gem 'barometer'
