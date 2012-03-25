@@ -47,7 +47,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'factory_girl_rails'
   gem 'mongrel', '1.2.0.pre2'
-  gem 'thin'
+  # gem 'thin'
   gem 'sqlite3'
   # gem 'pg'
   gem 'ruby-debug19'
