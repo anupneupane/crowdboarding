@@ -1,8 +1,8 @@
-require 'compass'
-require 'compass/app_integration/rails' 
-
-require 'fileutils'
-FileUtils.mkdir_p(Rails.root.join("tmp", "stylesheets"))
+# require 'compass'
+# require 'compass/app_integration/rails' 
+# 
+# require 'fileutils'
+# FileUtils.mkdir_p(Rails.root.join("tmp", "stylesheets"))
 
 # Compass::AppIntegration::Rails.initialize!
 

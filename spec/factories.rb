@@ -1,32 +1,36 @@
-Factory.define :user do |user|
-  user.sequence(:email) { |n| "info#{n}@onlinegeschenkenwinkel.nl" }
-  user.password 'secret'
-  user.name 'Crowdboarding'
-  user.nickname 'crowdboarding'
-end
+FactoryGirl.define do
 
-Factory.define :event do |event|
-  event.association :user
-  event.association :country
-  event.association :city
-  event.name "Retiro"
-  event.starts_at Time.now + 2.weeks
-  event.contact_details "1234567890"
-  event.street "Calle Alcala 177 7B"
-  event.tag_tokens "Retiro Longboard"
-end
+  factory :user do
+    sequence(:email) { |n| "info#{n}@onlinegeschenkenwinkel.nl" }
+    password 'secret'
+    name 'Crowdboarding'
+    nickname 'crowdboarding'
+  end
 
-Factory.define :country do |country|
-  country.sequence(:name) { |n| "Spain#{n}"} 
-  country.sequence(:country_code) { |n| "e#{n}"} 
-end
+  factory :event do
+    association :user
+    association :country
+    association :city
+    name "Retiro"
+    starts_at Time.now + 2.weeks
+    contact_details "1234567890"
+    street "Calle Alcala 177 7B"
+    tag_tokens "Retiro Longboard"
+  end
 
-Factory.define :city do |city|
-  city.sequence(:name) { |n| "Madrid#{n}"} 
-  city.association :country
-end
+  factory :country do
+    sequence(:name) { |n| "Spain#{n}"} 
+    sequence(:country_code) { |n| "e#{n}"} 
+  end
 
-Factory.define :notification do |notification|
-  notification.body "Lorem ipsum"
-  notification.association :user
+  factory :city do
+    sequence(:name) { |n| "Madrid#{n}"} 
+    association :country
+  end
+
+  factory :notification do
+    body "Lorem ipsum"
+    association :user
+  end
+
 end

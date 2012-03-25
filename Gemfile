@@ -1,13 +1,16 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '3.2.2'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', "  ~> 3.1.0"
-  gem 'coffee-rails', "~> 3.1.0"
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier'
+  
+  gem 'compass-rails', :ref => '9d88ed1690dec0215674c8de31206e76d334dcb6' #:git => 'git://github.com/Compass/compass-rails.git'
+  gem 'compass-960-plugin'
 end
 
 gem 'devise'
@@ -15,20 +18,21 @@ gem 'cancan'
 gem 'jquery-rails'
 gem 'haml'
 gem 'formtastic'
-gem "compass", :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31'
-gem 'compass-960-plugin'
-gem 'typus'
+gem 'typus', :git => 'git://github.com/fesplugas/typus.git', :branch => 'master'
 gem 'ancestry'
 gem 'geocoder'
+gem 'aws-sdk'
 gem 'aws-s3'
 gem "paperclip"
 gem 'barometer'
 gem 'acts-as-taggable-on'
 gem 'rails3-jquery-autocomplete'
-gem 'omniauth', '>= 0.2.6'
-gem 'twitter'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+# gem 'twitter'
 gem 'kaminari'
-gem "friendly_id", "~> 4.0.0.beta12"
+gem "friendly_id"
 
 group :production do
   gem 'pg'
@@ -51,9 +55,6 @@ group :development, :test do
   # gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
   gem 'guard'
   gem 'guard-rspec'
-  gem 'guard-sass'
-  gem 'guard-bundler'
-  gem 'growl'
   # gem 'guard-mozrepl'
   gem 'guard-livereload'
   # Pretty printed test output

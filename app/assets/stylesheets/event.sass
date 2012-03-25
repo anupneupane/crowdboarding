@@ -1,4 +1,5 @@
 @import "compass/css3/border-radius"
+@import "compass/css3/images"
 @import "support/colors"
 @import "compass/utilities/general/clearfix"
 @import "support/mixins"
@@ -40,7 +41,7 @@
 			padding: 5px
 			height: 17px
 			background-color: $dirty_white
-			@include border-radius(3px)
+			+border-radius(3px)
 	.event_highlights
 		.button, .event_highlight
 			span
@@ -75,7 +76,7 @@
 
 // Just show events
 img#event_map
-	@include border-radius(5px)
+	+border-radius(5px)
 	border: 2px solid $dark_gray
 	cursor: pointer
 	#map
@@ -112,8 +113,8 @@ img#event_map
 		text-align: center
 		margin-bottom: 20px
 		a.attend_link
-			@include linear-gradient(color-stops($crowdboarding, $dark_crowdboarding))
-			@include border-radius(5px)
+			+background-image(linear-gradient(color-stops($crowdboarding, $dark_crowdboarding)))
+			+border-radius(5px)
 			color: $almost_white
 			text-decoration: none
 			font-weight: bolder
@@ -125,10 +126,10 @@ img#event_map
 				width: 16px
 				padding-left: 20px
 		a.attend_link:hover
-			@include linear-gradient(color-stops($dark_crowdboarding, $crowdboarding))
+			+background-image(linear-gradient(color-stops($dark_crowdboarding, $crowdboarding)))
 		a.stop_attending
-			@include linear-gradient(color-stops($almost_black, #6a6a6a))
-			@include border-radius(5px)
+			+background-image(linear-gradient(color-stops($almost_black, #6a6a6a)))
+			+border-radius(5px)
 			color: $almost_white
 			text-decoration: none
 			font-weight: bolder
@@ -140,8 +141,8 @@ img#event_map
 				width: 16px
 				padding-left: 20px
 		a.stop_attending:hover
-			@include linear-gradient(color-stops($light_countercrowdboarding, $countercrowdboarding))
-			@include border-radius(5px)
+			+background-image(linear-gradient(color-stops($light_countercrowdboarding, $countercrowdboarding)))
+			+border-radius(5px)
 			color: $almost_white
 			text-decoration: none
 			font-weight: bolder

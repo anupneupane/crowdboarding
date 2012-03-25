@@ -1,16 +1,17 @@
+@import "compass"
 @import "compass/css3/border-radius"
-@import "support/colors"
-@import "compass/css3/gradient"
+@import "colors"
+@import "compass/css3/images"
 @import "compass/css3/opacity"
 
 @mixin awesome_box
-	@include border-radius(5px)
+	+border-radius(5px)
 	border-top: 4px solid $countercrowdboarding
 	border-bottom: 4px solid $almost_black
 	background-color: $dirty-white
 
 @mixin ordinary_box
-	@include border-radius(5px)
+	+border-radius(5px)
 	border-bottom: 4px solid $almost_black
 	background-color: $dirty-white
 
@@ -19,43 +20,42 @@
 	margin-left: 3px
 	
 @mixin standard_button
-	@include border-radius(5px)
+	+border-radius(5px)
 	font-weight: bolder
 	
 @mixin green_button
 	+standard_button
+	+background-image(linear-gradient(color-stops($crowdboarding, $dark_crowdboarding)))
 	color: $almost_white
-	@include linear-gradient(color-stops($crowdboarding, $dark_crowdboarding))
 	padding: 10px 30px
 	
 @mixin gray_button
 	+standard_button
+	+background-image(linear-gradient(color-stops(#FEFEFE, #ddd)))
 	color: $almost_black
-	background: $invisible_gray 
-	// @include linear-gradient(color-stops(#FEFEFE, #ddd))
+	background-color: $invisible_gray 
 	padding: 5px 10px
 
 @mixin blue_button
 	+standard_button
+	+background-image(linear-gradient(color-stops($crowdboarding_blue, $dark_crowdboarding_blue)))
 	color: $almost_white
-	@include linear-gradient(color-stops($crowdboarding_blue, $dark_crowdboarding_blue))
 	padding: 5px 10px
 	
 @mixin red_button
 	+standard_button
+	+background-image(linear-gradient(color-stops($countercrowdboarding, darken($countercrowdboarding, 10%))))
 	color: $almost_white
 	background: $countercrowdboarding
-	// @include linear-gradient(color-stops($countercrowdboarding, darken($countercrowdboarding, 10%)))
 	padding: 5px 10px
 
 @mixin gray_button_plus
 	+standard_button
+	+background-image(linear-gradient(color-stops(#FEFEFE, #ddd)))
 	color: $almost_black
-	@include linear-gradient(color-stops(#FEFEFE, #ddd))
 	padding: 5px 10px
 	
 @mixin button_hover
+	+background-image(linear-gradient(color-stops(#555, #666)))
 	color: $dirty_white
 	background: $almost_black
-	@include linear-gradient(color-stops(#555, #666))
-	
