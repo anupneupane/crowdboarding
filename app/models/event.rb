@@ -1,4 +1,7 @@
 class Event < ActiveRecord::Base
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
+  
   validates :name, :presence => true, :length => { :maximum => 100 }
   validates :contact_details, :length => { :maximum => 100 }
   validates :city_id, :presence => true
@@ -106,6 +109,17 @@ class Event < ActiveRecord::Base
   def days_left
     ((self.starts_at - Time.now)/1.day).round()
   end
+  
+
+  def self.search(params)
+    logger.debug "DEBUG searching"
+    tire.search do
+      query { 
+        string params[:query], default_operator: "AND" 
+      } if params[:query].present?
+    end
+  end
+
   
   private
     def minimum_tags

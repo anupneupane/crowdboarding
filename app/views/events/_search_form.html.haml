@@ -5,7 +5,7 @@
 			= (select_tag "country_id",  options_from_collection_for_select(Country.all.unshift(Country.new(:name => "All countries")), "id", "name", params[:country_id]))
 		%li.string
 			= label_tag "city_name", t('global.city')
-			= text_field_tag :city_name, params[:city_name]
+			= text_field_tag :query, params[:query]
 		%li.submit
 			%fieldset.buttons
 				= submit_tag t('global.search')

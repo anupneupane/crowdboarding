@@ -33,6 +33,7 @@ gem 'omniauth-twitter'
 # gem 'twitter'
 gem 'kaminari'
 gem "friendly_id"
+gem 'tire'
 
 group :production do
   gem 'pg'
@@ -44,7 +45,7 @@ group :development, :test do
   gem 'launchy'
   gem 'cucumber-rails'
   gem 'rspec-rails'
-  gem 'shoulda'
+  # gem 'shoulda'
   gem 'factory_girl_rails'
   gem 'mongrel', '1.2.0.pre2'
   # gem 'thin'

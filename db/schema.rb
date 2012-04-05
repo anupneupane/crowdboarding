@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(:version => 20110910010530) do
     t.string   "salt",                                :null => false
     t.string   "crypted_password",                    :null => false
     t.string   "preferences"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
   end
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(:version => 20110910010530) do
   create_table "attendances", :force => true do |t|
     t.integer  "user_id"
     t.integer  "event_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "attendances", ["event_id"], :name => "index_attendances_on_event_id"
@@ -43,8 +43,8 @@ ActiveRecord::Schema.define(:version => 20110910010530) do
     t.integer  "user_id"
     t.string   "provider",   :limit => 20
     t.string   "uid"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   add_index "authentications", ["user_id"], :name => "index_authentications_on_user_id"
@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(:version => 20110910010530) do
     t.text     "body"
     t.integer  "commentable_id"
     t.string   "commentable_type", :limit => 14
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   add_index "comments", ["ancestry"], :name => "index_comments_on_ancestry"
@@ -90,8 +90,8 @@ ActiveRecord::Schema.define(:version => 20110910010530) do
     t.integer  "users_count",                    :default => 0
     t.integer  "comments_count",                 :default => 0
     t.integer  "views_count",                    :default => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
   end
 
   add_index "events", ["city_id"], :name => "index_events_on_city_id"
@@ -102,8 +102,8 @@ ActiveRecord::Schema.define(:version => 20110910010530) do
     t.integer  "user_id",                  :null => false
     t.integer  "friend_id",                :null => false
     t.string   "type",       :limit => 10
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   add_index "friendships", ["friend_id"], :name => "index_friendships_on_friend_id"
@@ -113,8 +113,8 @@ ActiveRecord::Schema.define(:version => 20110910010530) do
     t.integer  "user_id"
     t.string   "body",       :limit => 100
     t.boolean  "read",                      :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
   end
 
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
@@ -167,8 +167,8 @@ ActiveRecord::Schema.define(:version => 20110910010530) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                                  :null => false
+    t.datetime "updated_at",                                                  :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
