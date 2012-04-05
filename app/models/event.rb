@@ -118,7 +118,7 @@ class Event < ActiveRecord::Base
     def search(params)
       tire.search do
         query { string params[:query], default_operator: "AND" } if params[:query].present?
-        filter :range, :starts_at: { lte: Time.zone.now } if params[:query].present?
+        filter :range, :starts_at => { :lte => Time.zone.now } if params[:query].present?
         sort { by :starts_at, "desc" }
       end
     end
