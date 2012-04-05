@@ -17,11 +17,8 @@ class EventsController < ApplicationController
       # @events = Event.joins(:taggings, :tags).where(["events.name LIKE ? OR events.city_name LIKE ? ", search_string, search_string]).page(params[:page]).per(10)
       # @events = Event.recent.page(params[:page]).per(10)
       # @events = Event.page(params[:page]).per(10)
-      @events = if params[:query].present?
-        Event.search(params)
-      else
-        Event.all
-      end
+      Event.search(params)
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml { render :xml => @events }

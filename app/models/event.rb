@@ -111,13 +111,18 @@ class Event < ActiveRecord::Base
   end
   
 
-  def self.search(params)
-    logger.debug "DEBUG searching"
-    tire.search do
-      query { 
-        string params[:query], default_operator: "AND" 
-      } if params[:query].present?
+  # Class methods
+  
+  class << self
+  
+    def search(params)
+      tire.search do
+        query { string params[:query], default_operator: "AND" } if params[:query].present?
+        filter :range, :starts_at: { lte: Time.zone.now } if params[:query].present?
+        sort { by :starts_at, "desc" }
+      end
     end
+
   end
 
   
